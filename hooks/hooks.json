@@ -1,5 +1,5 @@
 {
-  "description": "JET Skills — reancoragem do ledger (SessionStart/PostCompact) e fronteiras de seguranca (PreToolUse em Bash). Os dois sao deterministicos e fail-open: excecao no script vira exit 0 silencioso, nunca bloqueio acidental.",
+  "description": "JET Skills — reancoragem do ledger (SessionStart/PostCompact), fronteiras de seguranca (PreToolUse/Bash) e integridade do ledger (PreToolUse/Agent). Todos deterministicos e fail-open: excecao no script vira exit 0 silencioso, nunca bloqueio acidental.",
   "hooks": {
     "SessionStart": [
       {
@@ -7,7 +7,10 @@
           {
             "type": "command",
             "command": "python3",
-            "args": ["-S", "${CLAUDE_PLUGIN_ROOT}/hooks/scripts/contexto.py"],
+            "args": [
+              "-S",
+              "${CLAUDE_PLUGIN_ROOT}/hooks/scripts/contexto.py"
+            ],
             "timeout": 5,
             "statusMessage": "JET: lendo ledger"
           }
@@ -20,7 +23,10 @@
           {
             "type": "command",
             "command": "python3",
-            "args": ["-S", "${CLAUDE_PLUGIN_ROOT}/hooks/scripts/contexto.py"],
+            "args": [
+              "-S",
+              "${CLAUDE_PLUGIN_ROOT}/hooks/scripts/contexto.py"
+            ],
             "timeout": 5,
             "statusMessage": "JET: reancorando ledger"
           }
@@ -42,6 +48,23 @@
             ],
             "timeout": 5,
             "statusMessage": "JET: fronteiras"
+          }
+        ]
+      },
+      {
+        "matcher": "Agent",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3",
+            "args": [
+              "-S",
+              "${CLAUDE_PLUGIN_ROOT}/hooks/scripts/gate_despacho.py",
+              "--nivel",
+              "${user_config.JET_NIVEL_LEDGER}"
+            ],
+            "timeout": 5,
+            "statusMessage": "JET: ledger"
           }
         ]
       }

@@ -26,8 +26,9 @@ Você conduz UMA iteração do loop autônomo do sistema de agentes da JET, mant
    **no escopo autônomo** (doc/padrões/scaffolding; nada que exija VPS/secrets/compras).
 3. **Executar:** siga a cadeia spec-driven da JET — `jet-brainstorm`
    (se o pedido vier vago) → `jet-plano` (plano task-a-task + checkpoints) →
-   delegação via `jet-subagentes` (serial vs. paralelo), roteando pela
-   especialidade do time de dev:
+   delegação via `jet-subagentes`, roteando pelo campo **Agente** da task do plano.
+   A tabela abaixo é o critério que o plano usou — e o **seu** critério apenas quando o plano
+   não declarou:
    - UI, design system, HTML/CSS/JS do projeto → `jet-dev-frontend`
    - Serviços de backend, MCPs, APIs → `jet-dev-backend`
    - Schema, SQL, migração/performance de banco → `jet-dev-dados`

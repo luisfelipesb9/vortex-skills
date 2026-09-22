@@ -51,7 +51,7 @@ Uma tarefa é a menor unidade que carrega seu próprio ciclo de teste e que vale
 ```markdown
 # Plano de Implementação: [Nome da Feature]
 
-> **Para quem for executar:** SUB-SKILL OBRIGATÓRIA: use a skill `jet-subagentes` para implementar este plano tarefa por tarefa, com um agente `jet-implementador` por tarefa e revisão via `jet-revisor` entre tarefas. Passos usam sintaxe de checkbox (`- [ ]`) para rastreamento.
+> **Para quem for executar:** SUB-SKILL OBRIGATÓRIA: use a skill `jet-subagentes` para implementar este plano tarefa por tarefa, com o agente declarado no campo **Agente** de cada tarefa (default `jet-implementador`) e revisão via `jet-revisor` entre tarefas. Passos usam sintaxe de checkbox (`- [ ]`) para rastreamento.
 
 **Objetivo:** [Uma frase descrevendo o que isso constrói]
 
@@ -78,6 +78,20 @@ requisitos de toda tarefa incluem implicitamente esta seção.]
 - Criar: `caminho/exato/para/arquivo.py`
 - Modificar: `caminho/exato/para/existente.py:123-145`
 - Teste: `tests/caminho/exato/para/test.py`
+
+**Agente:** `jet-dev-frontend`
+
+Decida pelos arquivos listados acima, não pelo título da tarefa:
+
+| Domínio dominante | Agente |
+|---|---|
+| UI, design system, HTML/CSS/JS, E2E | `jet-dev-frontend` |
+| Serviços, APIs, lógica de servidor, MCPs | `jet-dev-backend` |
+| Schema, SQL, migração, performance de query | `jet-dev-dados` |
+| Container, CI/CD, deploy, runbook | `jet-dev-devops` |
+| **Multi-área sem dominância clara, ou fora das quatro** | `jet-implementador` |
+
+Tarefa que toca três áreas é do generalista — não force um especialista a sair do domínio dele.
 
 **Interfaces:**
 - Consome: [o que esta tarefa usa de tarefas anteriores — assinaturas exatas]
@@ -148,6 +162,8 @@ Depois de escrever o plano completo, releia o spec com olhos frescos e confira o
 
 **3. Consistência de tipos:** Os tipos, assinaturas de método e nomes de propriedade usados em tarefas posteriores batem com o que foi definido nas tarefas anteriores? Uma função chamada `limparCamadas()` na Tarefa 3 mas `limparCamadasCompleto()` na Tarefa 7 é um bug.
 
+**4. Roteamento:** toda tarefa tem campo `Agente`? Ele bate com os arquivos que a própria tarefa lista? Tarefa que toca três áreas está com `jet-implementador`?
+
 Se encontrar problemas, corrija inline. Não precisa revisar de novo — só corrija e siga em frente. Se encontrar um requisito do spec sem tarefa correspondente, adicione a tarefa.
 
 ## Entrega para execução
@@ -157,5 +173,5 @@ Depois de salvar o plano, ofereça o próximo passo:
 **"Plano completo e salvo em `.jet/sdd/plans/<arquivo>.md`. Próximo passo: execução."**
 
 - **SUB-SKILL OBRIGATÓRIA:** invoque a skill `jet-subagentes`
-- Ela despacha um agente `jet-implementador` fresco por tarefa (ciclo TDD via `jet-tdd`), com revisão de `jet-revisor` entre tarefas
+- Ela despacha um agente fresco por tarefa — o declarado no campo `Agente` (ciclo TDD via `jet-tdd`), com revisão de `jet-revisor` entre tarefas
 - Ao final de cada tarefa (ou do plano completo, conforme o fluxo de `jet-subagentes`), rode a skill `jet-verificacao` antes de declarar qualquer coisa como concluída — evidência antes de afirmação

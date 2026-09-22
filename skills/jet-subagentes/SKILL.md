@@ -47,8 +47,11 @@ paralelizar por subagentes.
 
 Para cada task, nesta ordem:
 
-1. Despachar um subagente **implementador** (por padrão, o agent
-   `jet-implementador`) com o brief da task.
+1. Despachar o agente declarado no campo **Agente** da task, com o brief
+   dela. Plano antigo, sem esse campo: `jet-implementador`. O campo viaja no
+   brief — se o agente despachado disser que a task não é da especialidade
+   dele, isso é FALTA_CONTEXTO: corrija o campo no plano e redespache, não
+   empurre.
 2. Se o implementador fizer perguntas, responda com contexto completo e
    redespache — não empurre ele para implementar na dúvida.
 3. O implementador implementa em TDD, testa, faz commit e se autorrevisa,
@@ -450,7 +453,8 @@ Concluído!
 - **`jet-verificacao`** — aplique a mentalidade de evidência antes de
   afirmar antes de qualquer alegação de "pronto", tanto sua quanto a dos
   subagentes.
-- **Agent `jet-implementador`** — implementador padrão por task, segue TDD
-  (`jet-tdd`).
+- **Agents `jet-implementador`, `jet-dev-backend`, `jet-dev-frontend`,
+  `jet-dev-dados`, `jet-dev-devops`** — quem implementa a task, conforme o
+  campo `Agente` do plano. Todos seguem `jet-tdd`.
 - **Agent `jet-revisor`** — revisor por task (spec + qualidade) e da
   revisão final de branch.

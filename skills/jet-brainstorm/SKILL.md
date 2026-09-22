@@ -23,7 +23,7 @@ Crie uma tarefa para cada item abaixo e complete-as em ordem:
 
 1. **Explorar o contexto do projeto** — arquivos, docs, commits recentes
 2. **Fazer perguntas de esclarecimento** — uma de cada vez, entendendo propósito/restrições/critérios de sucesso
-3. **Propor 2-3 abordagens** — com trade-offs e sua recomendação
+3. **Propor 2-3 abordagens** — com trade-offs e sua recomendação (`jet-pesquisador` quando a comparação depender de fato externo)
 4. **Apresentar o design** — em seções proporcionais à complexidade, com aprovação do usuário após cada seção
 5. **Escrever o documento de design** — salvar em `.jet/sdd/specs/YYYY-MM-DD-<topico>-design.md` e commitar
 6. **Autorrevisão do spec** — checagem rápida inline de placeholders, contradições, ambiguidade, escopo (ver abaixo)
@@ -74,6 +74,12 @@ digraph jet_brainstorm {
 **Explorando abordagens:**
 
 - Proponha 2-3 abordagens diferentes com trade-offs
+- Se a escolha **depender de fato externo ao repositório** (maturidade e manutenção de uma
+  biblioteca, comportamento documentado de uma API de terceiro, custo, breaking change anunciado),
+  despache o agente `jet-pesquisador` com as perguntas exatas e aguarde o relatório **em arquivo**.
+  Não faça essa pesquisa no seu próprio contexto: as fontes brutas ficam residentes pelo resto da
+  sessão, e o contexto do controlador é o recurso que todo o método tenta preservar. Sem fato
+  externo em disputa, não despache — opinião não precisa de pesquisa.
 - Apresente as opções de forma conversacional, com sua recomendação e o raciocínio por trás dela
 - Comece pela opção recomendada e explique o porquê
 

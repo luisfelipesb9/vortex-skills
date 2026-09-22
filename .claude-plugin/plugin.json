@@ -23,15 +23,23 @@
       "title": "Fronteiras de seguranca",
       "description": "Merge, force-push, push em branch protegida, deploy de producao, secrets e DNS. off = desligado | warn = so avisa | block = nega o irreversivel e pergunta no resto.",
       "default": "block",
-      "options": ["off", "warn", "block"],
+      "options": [
+        "off",
+        "warn",
+        "block"
+      ],
       "required": false
     },
     "JET_NIVEL_LEDGER": {
       "type": "string",
       "title": "Integridade do ledger",
-      "description": "Impede redespachar task ja concluida e implementadores em paralelo. off | warn | block.",
+      "description": "Impede redespachar task que o ledger ja marca como concluida — o erro mais caro depois de uma compactacao. off | warn | block.",
       "default": "block",
-      "options": ["off", "warn", "block"],
+      "options": [
+        "off",
+        "warn",
+        "block"
+      ],
       "required": false
     },
     "JET_NIVEL_TDD": {
@@ -39,7 +47,11 @@
       "title": "Gate de TDD no commit (v2)",
       "description": "Reservado para a v2. Exige suite verde fresca antes de commitar codigo de producao. off | warn | block.",
       "default": "off",
-      "options": ["off", "warn", "block"],
+      "options": [
+        "off",
+        "warn",
+        "block"
+      ],
       "required": false
     },
     "JET_NIVEL_VERIFICACAO": {
@@ -47,7 +59,11 @@
       "title": "Gate de evidencia antes de concluir (v2)",
       "description": "Reservado para a v2. Cobra output de verificacao antes de alegar que algo esta pronto. off | warn | block.",
       "default": "off",
-      "options": ["off", "warn", "block"],
+      "options": [
+        "off",
+        "warn",
+        "block"
+      ],
       "required": false
     },
     "JET_LEDGER_PATH": {

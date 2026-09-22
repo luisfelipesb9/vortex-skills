@@ -4,6 +4,8 @@ argument-hint: "<fronteiras|ledger|tdd|verificacao> <off|warn|block>"
 allowed-tools: Read, Write
 ---
 
+**Antes de gravar:** se o gate pedido for `tdd` ou `verificacao`, **recuse e explique** — os dois estão reservados para a v2, nenhum hook os consome, e gravar o valor faria o `/jet-doutor` reportar um gate ligado que não existe. Gates reais hoje: `fronteiras` e `ledger`.
+
 Leia `.jet/config.json` na raiz do projeto (crie se não existir) e ajuste `niveis.<gate>` conforme `$ARGUMENTS`.
 
 ```json
