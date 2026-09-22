@@ -15,7 +15,7 @@ Implementa uma task de back-end na stack do projeto atual (Node/TS, Python, etc.
 
 ## Como funciona
 
-Segue o fluxo TDD do time (o `jet-implementador` é a referência do processo: brief → seams → RED → GREEN → suíte → commit → report). Trabalha em UMA task por vez, entrega via commit na branch com Conventional Commits — **nunca faz merge nem force-push**. Integração externa com efeito irreversível (cobrança, envio real de e-mail/SMS) nunca é disparada contra o serviço real em teste/dev — só mock na fronteira; habilitar em produção fica com o humano. Se travar ou faltar contexto, reporta BLOCKED/NEEDS_CONTEXT em vez de adivinhar.
+Segue o fluxo TDD do time (o `jet-implementador` é a referência do processo: brief → seams → RED → GREEN → suíte → commit → report). Trabalha em UMA task por vez, entrega via commit na branch com Conventional Commits — **nunca faz merge nem force-push**. Integração externa com efeito irreversível (cobrança, envio real de e-mail/SMS) nunca é disparada contra o serviço real em teste/dev — só mock na fronteira; habilitar em produção fica com o humano. Se travar ou faltar contexto, reporta BLOQUEADO/FALTA_CONTEXTO em vez de adivinhar.
 
 ## Instalação
 

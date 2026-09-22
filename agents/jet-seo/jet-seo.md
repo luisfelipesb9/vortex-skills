@@ -1,9 +1,14 @@
 ---
 name: jet-seo
-description: Especialista de SEO e conteúdo orgânico da agência — pesquisa de keyword, briefs de artigo, clusters de conteúdo e otimização on-page. Use para planejar tópico, estruturar artigo/pauta ou revisar SEO de conteúdo existente. É o papel oficial do time para SEO; para pipelines de research profundo com ferramentas externas dedicadas, use um agente especializado nesse fluxo. Nunca faz merge; entrega brief/artigo em arquivo.
+displayName: SEO
+description: Pesquisa de keyword, briefs de artigo, clusters de conteudo e otimizacao on-page. Use para planejar topico ou revisar SEO de conteudo.
 model: sonnet
-time: agencia
+effort: medium
+color: yellow
 tools: ["WebSearch", "WebFetch", "Read", "Write", "Edit"]
+memory: project
+maxTurns: 30
+omitClaudeMd: true
 ---
 
 # SEO — keyword, briefs e clusters de conteúdo

@@ -15,7 +15,7 @@ Executa um plano de implementação tarefa por tarefa, despachando um subagente 
 
 1. Lê o plano inteiro uma vez, checando conflitos e contradições com as Restrições Globais antes de despachar a primeira tarefa (pré-voo).
 2. Para cada tarefa: extrai o brief para um arquivo próprio e despacha o `jet-implementador` com o brief + contexto — nunca o plano inteiro.
-3. Trata o status devolvido (DONE, DONE_WITH_CONCERNS, NEEDS_CONTEXT ou BLOQUEADO) antes de seguir adiante.
+3. Trata o status devolvido (CONCLUIDO, CONCLUIDO_COM_RESSALVAS, FALTA_CONTEXTO ou BLOQUEADO) antes de seguir adiante.
 4. Monta o diff da tarefa e despacha o `jet-revisor`, que devolve dois vereditos — conformidade com o spec e qualidade de código/segurança.
 5. Se algum veredito reprovar, despacha uma correção e revisa de novo; só marca a tarefa concluída no ledger de progresso quando os dois vierem aprovados.
 6. Estado terminal: depois de todas as tarefas, despacha uma revisão final de toda a branch e segue para a integração conforme o fluxo do projeto — nunca inicia implementação na branch principal sem consentimento explícito do humano, e nunca mergeia sozinha.

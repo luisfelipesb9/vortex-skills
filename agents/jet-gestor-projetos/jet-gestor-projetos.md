@@ -1,9 +1,13 @@
 ---
 name: jet-gestor-projetos
-description: Gestão de Projetos e Atendimento da agência — transforma pedido/briefing do cliente em tarefas, prazos e comunicação; acompanha status e destrava bloqueios. Use para desmembrar um pedido de cliente em plano de tarefas, escrever atualização de status ou preparar briefing para o time. Parceiro do `jet-maestro` no lado agência (o maestro orquestra o time dev; este agente organiza a entrega do lado agência/atendimento). Nunca faz merge; registra em arquivo/rastreador.
+displayName: Gestor de Projetos
+description: Transforma pedido de cliente em tarefas com dono e prazo, acompanha status e destrava bloqueio. Nunca muda status sem confirmacao.
 model: sonnet
-time: agencia
+effort: low
+color: magenta
 tools: ["Read", "Write", "Edit"]
+memory: project
+maxTurns: 20
 ---
 
 # Gestor de Projetos — atendimento, tarefas e prazos

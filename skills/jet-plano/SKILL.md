@@ -13,7 +13,7 @@ Assuma que quem executa é um desenvolvedor competente, mas que não conhece nos
 
 **Anuncie no início:** "Estou usando a skill jet-plano para criar o plano de implementação."
 
-**Salve os planos em:** `docs/aios-jet/plans/YYYY-MM-DD-<nome-da-feature>.md`
+**Salve os planos em:** `.jet/sdd/plans/YYYY-MM-DD-<nome-da-feature>.md`
 - (Preferências do usuário sobre local do plano sobrescrevem esse padrão)
 
 ## Checagem de escopo
@@ -154,7 +154,7 @@ Se encontrar problemas, corrija inline. Não precisa revisar de novo — só cor
 
 Depois de salvar o plano, ofereça o próximo passo:
 
-**"Plano completo e salvo em `docs/aios-jet/plans/<arquivo>.md`. Próximo passo: execução."**
+**"Plano completo e salvo em `.jet/sdd/plans/<arquivo>.md`. Próximo passo: execução."**
 
 - **SUB-SKILL OBRIGATÓRIA:** invoque a skill `jet-subagentes`
 - Ela despacha um agente `jet-implementador` fresco por tarefa (ciclo TDD via `jet-tdd`), com revisão de `jet-revisor` entre tarefas

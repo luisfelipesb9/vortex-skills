@@ -1,4 +1,9 @@
 .DS_Store
 __pycache__/
 *.pyc
-.jet/
+
+# Artefatos transitorios do fluxo JET. Specs, planos e o ledger de progresso
+# ficam VERSIONADOS de proposito: o ledger e o mapa de recuperacao depois de
+# uma compactacao, e ele so serve se sobreviver a uma limpeza do repo.
+.jet/sdd/diffs/
+.jet/cache/

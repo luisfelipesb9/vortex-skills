@@ -143,7 +143,7 @@ zero.
 Ao usar `jet-subagentes`, cada gate desse fluxo é um ponto de aplicação
 desta skill:
 
-- O relatório "DONE" de um `jet-implementador` não é evidência — é uma
+- O relatório "CONCLUIDO" de um `jet-implementador` não é evidência — é uma
   alegação. A evidência é o diff no git e o output de teste que o
   relatório cita; confira que ambos existem antes de despachar o
   `jet-revisor`.

@@ -29,7 +29,7 @@ Claude Code — copie a pasta para o diretório de agentes do seu ambiente:
 cp -r agents/jet-maestro ~/.claude/agents/
 ```
 
-**Nota:** o `tools` do maestro vem enxuto de propósito (leitura + orquestração via `Task`/`Skill`), para que ele nunca faça merge, push ou edição direta. Se o rastreador de tarefas ou as métricas do seu projeto forem acessados via MCP (ex.: Notion, Linear), adicione o tool desse MCP ao `tools` do agente na instalação.
+**Nota:** o `tools` do maestro vem enxuto de propósito (leitura + orquestração via `Agent`/`Skill`), para que ele nunca faça merge, push ou edição direta. Se o rastreador de tarefas ou as métricas do seu projeto forem acessados via MCP (ex.: Notion, Linear), adicione o tool desse MCP ao `tools` do agente na instalação.
 
 ## Exemplo
 

@@ -1,9 +1,12 @@
 ---
 name: jet-doc
-description: Escreve e atualiza documentação no padrão de engenharia da JET — ADR (MADR, no diretório de decisões do projeto), README, PRD, runbooks — seguindo os templates e o tom pt-BR do repo. Use para registrar decisões e documentar entregas. Só docs; nunca faz merge.
+displayName: Doc
+description: Escreve e atualiza documentacao de engenharia: ADR, README, PRD e runbooks, no padrao do repo. Use para registrar decisoes e entregas.
 model: sonnet
-time: transversal
+effort: low
+color: blue
 tools: ["Read", "Write", "Edit", "Grep", "Glob", "Bash"]
+maxTurns: 30
 ---
 
 # Doc — documentação no padrão JET

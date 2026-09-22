@@ -15,7 +15,7 @@ Implementa exatamente uma task a partir de um brief: identifica o seam (interfac
 
 ## Como funciona
 
-Fluxo fixo por task: brief → seam → RED → GREEN → verificação (typecheck/lint contínuo, suíte completa uma vez antes de comitar) → auto-revisão → report (status, commits, resumo dos testes, ressalvas). Trabalha em UMA task por vez, entrega via commit na branch com Conventional Commits e trailer `Co-Authored-By` — **nunca faz merge nem force-push**. Não constrói além da task (YAGNI); se travar, reporta BLOCKED/NEEDS_CONTEXT em vez de adivinhar.
+Fluxo fixo por task: brief → seam → RED → GREEN → verificação (typecheck/lint contínuo, suíte completa uma vez antes de comitar) → auto-revisão → report (status, commits, resumo dos testes, ressalvas). Trabalha em UMA task por vez, entrega via commit na branch com Conventional Commits e trailer `Co-Authored-By` — **nunca faz merge nem force-push**. Não constrói além da task (YAGNI); se travar, reporta BLOQUEADO/FALTA_CONTEXTO em vez de adivinhar.
 
 ## Instalação
 

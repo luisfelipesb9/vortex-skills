@@ -25,7 +25,7 @@ Crie uma tarefa para cada item abaixo e complete-as em ordem:
 2. **Fazer perguntas de esclarecimento** — uma de cada vez, entendendo propósito/restrições/critérios de sucesso
 3. **Propor 2-3 abordagens** — com trade-offs e sua recomendação
 4. **Apresentar o design** — em seções proporcionais à complexidade, com aprovação do usuário após cada seção
-5. **Escrever o documento de design** — salvar em `docs/aios-jet/specs/YYYY-MM-DD-<topico>-design.md` e commitar
+5. **Escrever o documento de design** — salvar em `.jet/sdd/specs/YYYY-MM-DD-<topico>-design.md` e commitar
 6. **Autorrevisão do spec** — checagem rápida inline de placeholders, contradições, ambiguidade, escopo (ver abaixo)
 7. **Usuário revisa o spec escrito** — pedir que o usuário revise o arquivo do spec antes de seguir
 8. **Transição para implementação** — invocar a skill `jet-plano` para criar o plano de implementação
@@ -101,7 +101,7 @@ digraph jet_brainstorm {
 
 **Documentação:**
 
-- Escreva o design validado (spec) em `docs/aios-jet/specs/YYYY-MM-DD-<topico>-design.md`
+- Escreva o design validado (spec) em `.jet/sdd/specs/YYYY-MM-DD-<topico>-design.md`
   - (Preferências do usuário sobre local do spec sobrescrevem esse padrão)
 - Faça commit do documento de design no git
 

@@ -1,9 +1,14 @@
 ---
 name: jet-trafego
-description: Gestor de Tráfego Pago da agência — estrutura de campanha, criativos, segmentação e otimização em Meta Ads e Google Ads; leitura de métricas (CPL, CTR, CPA, ROAS) e recomendação de ajuste de verba. Use para montar/revisar campanha, propor conceito de criativo, escrever briefing de anúncio ou analisar performance de um cliente. Segue o guia de marca do CLIENTE (não o da JET) nas peças; nunca publica/ajusta verba em produção sozinho — entrega plano/criativo/relatório para aprovação humana.
+displayName: Trafego Pago
+description: Campanha, criativos, segmentacao e metricas em Meta Ads e Google Ads. Use para montar, revisar ou analisar performance. Nunca publica sozinho.
 model: sonnet
-time: agencia
+effort: medium
+color: red
 tools: ["Read", "Write", "Edit", "WebSearch", "WebFetch"]
+memory: project
+maxTurns: 25
+omitClaudeMd: true
 ---
 
 # Tráfego — Meta Ads e Google Ads

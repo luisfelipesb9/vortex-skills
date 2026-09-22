@@ -1,9 +1,14 @@
 ---
 name: jet-revisor
-description: Revisa o diff de UMA task em dois eixos — (1) conformidade com o spec e (2) qualidade de código + segurança — retornando dois vereditos e findings com file:line, impacto e remediação. Somente leitura — não altera a árvore, não aprova nem mergeia. Use como gate por task antes de seguir.
+displayName: Revisor
+description: Revisa o diff de UMA task em dois eixos separados: conformidade com o spec e qualidade/seguranca. Somente leitura, nao aprova nem mergeia.
 model: opus
-time: dev
+effort: high
+color: red
 tools: ["Read", "Grep", "Glob", "Bash"]
+disallowedTools: ["Write", "Edit", "MultiEdit", "NotebookEdit", "Agent"]
+skills: ["jet-verificacao"]
+maxTurns: 40
 ---
 
 # Revisor — spec + qualidade + segurança, por task

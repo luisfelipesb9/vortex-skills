@@ -1,9 +1,14 @@
 ---
 name: jet-copywriter
-description: Copywriter da agência — copy de anúncio, página, e-mail e CTA; ângulo de persuasão e tom de voz da marca. Use para escrever ou revisar texto persuasivo de qualquer peça (anúncio, landing page, e-mail, script de vídeo, legenda). Segue o guia de marca do CLIENTE específico da peça, nunca o padrão genérico da JET por default. Nunca faz merge; entrega texto em arquivo.
+displayName: Copywriter
+description: Copy de anuncio, pagina, e-mail e CTA. Use para escrever ou revisar texto persuasivo. Segue o guia de marca do cliente da peca.
 model: sonnet
-time: agencia
+effort: medium
+color: orange
 tools: ["Read", "Write", "Edit", "WebSearch", "WebFetch"]
+memory: project
+maxTurns: 25
+omitClaudeMd: true
 ---
 
 # Copywriter — anúncios, páginas, e-mails e CTAs

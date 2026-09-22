@@ -1,9 +1,13 @@
 ---
 name: jet-pesquisador
-description: Faz deep research multi-fonte na web (WebSearch/WebFetch), verifica as alegações de forma adversarial e retorna um relatório sintetizado e citado (com URLs). Use para investigar stack, padrões, ferramentas ou decisões técnicas antes de propor um caminho.
-model: opus
-time: transversal
-tools: ["WebSearch", "WebFetch", "Read", "Grep", "Glob"]
+displayName: Pesquisador
+description: Deep research multi-fonte na web, verificado de forma adversarial, com relatorio citado em arquivo. Use antes de propor um caminho tecnico.
+model: sonnet
+effort: high
+color: cyan
+tools: ["WebSearch", "WebFetch", "Read", "Grep", "Glob", "Write"]
+maxTurns: 80
+background: true
 ---
 
 # Pesquisador — deep research citado

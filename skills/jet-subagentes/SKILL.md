@@ -54,7 +54,7 @@ Para cada task, nesta ordem:
 3. O implementador implementa em TDD, testa, faz commit e se autorrevisa,
    reportando um dos quatro status (ver "Tratando o status do
    implementador" abaixo).
-4. Assim que o status for DONE (ou DONE_WITH_CONCERNS resolvido), monte o
+4. Assim que o status for CONCLUIDO (ou CONCLUIDO_COM_RESSALVAS resolvido), monte o
    diff da task e despache o subagente **revisor** (o agent `jet-revisor`)
    com esse diff.
 5. O revisor devolve dois vereditos: **conformidade com o spec** e
@@ -119,13 +119,13 @@ um arquivo só também cabem no nível mais barato.
 
 O `jet-implementador` reporta um dos quatro status:
 
-- **DONE:** monte o pacote de revisão (commit list + diff da task, veja
+- **CONCLUIDO:** monte o pacote de revisão (commit list + diff da task, veja
   "Como entregar artefatos" abaixo) e despache o `jet-revisor`.
-- **DONE_WITH_CONCERNS:** a task foi concluída mas o implementador sinalizou
+- **CONCLUIDO_COM_RESSALVAS:** a task foi concluída mas o implementador sinalizou
   dúvidas. Leia as preocupações antes de seguir. Se forem sobre
   corretude/escopo, resolva antes da revisão. Se forem só observações (ex.:
   "esse arquivo está ficando grande"), registre e siga para a revisão.
-- **NEEDS_CONTEXT:** falta informação que não foi fornecida. Forneça o
+- **FALTA_CONTEXTO:** falta informação que não foi fornecida. Forneça o
   contexto que falta e redespache.
 - **BLOQUEADO:** o implementador não consegue concluir. Avalie o bloqueio:
   1. Se é falta de contexto, forneça mais contexto e redespache no mesmo
@@ -244,7 +244,7 @@ só na todo list.
 
 - No início da execução, verifique se já existe um ledger de progresso
   (ex.: `.jet/sdd/progress.md` na raiz do projeto). Tasks lá marcadas como
-  concluídas estão DONE — não redespache; retome na primeira task não
+  concluídas estão CONCLUIDO — não redespache; retome na primeira task não
   marcada.
 - Quando a revisão de uma task vier limpa, adicione uma linha ao ledger na
   mesma mensagem em que você faz o resto da contabilidade: `Task N:
@@ -261,7 +261,7 @@ só na todo list.
 ```
 Você: Vou usar Desenvolvimento Orientado por Subagentes para executar este plano.
 
-[Lê o plano uma vez: docs/jet/planos/feature-plano.md]
+[Lê o plano uma vez: .jet/sdd/plans/feature-plano.md]
 [Cria todos para todas as tasks]
 
 Task 1: Script de instalação do hook
