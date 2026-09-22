@@ -13,8 +13,8 @@ Assuma que quem executa é um desenvolvedor competente, mas que não conhece nos
 
 **Anuncie no início:** "Estou usando a skill jet-plano para criar o plano de implementação."
 
-**Salve os planos em:** `.jet/sdd/plans/YYYY-MM-DD-<nome-da-feature>.md`
-- (Preferências do usuário sobre local do plano sobrescrevem esse padrão)
+**Salve os planos em:** `<JET_DOCS_PATH>/plans/YYYY-MM-DD-<nome-da-feature>.md` — default `.jet/sdd/plans/`.
+Se o projeto configurou `JET_DOCS_PATH` (na instalação do plugin ou em `.jet/config.json`), use o caminho configurado.
 
 ## Checagem de escopo
 

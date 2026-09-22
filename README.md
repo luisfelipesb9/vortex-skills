@@ -1,5 +1,11 @@
 # JET Skills
 
+[![versão](https://img.shields.io/badge/vers%C3%A3o-1.0.0-informational)](CHANGELOG.md)
+[![licença](https://img.shields.io/badge/licen%C3%A7a-MIT-informational)](LICENSE)
+[![Claude Code](https://img.shields.io/badge/Claude%20Code-plugin-informational)](https://claude.com/claude-code)
+[![agentes](https://img.shields.io/badge/agentes-15-informational)](docs/agentes/)
+[![skills](https://img.shields.io/badge/skills-6-informational)](docs/skills/)
+
 > O sistema de agentes que a JET Digital usa para tocar projetos de dev e de agência com Claude Code — não uma coleção de prompts soltos, mas um time com papéis, fronteiras e um método de trabalho comum.
 
 A JET não escreve um prompt novo a cada tarefa. Construiu um **time fixo de agentes especializados** — cada um com escopo claro, ferramentas certas e guardrails de segurança — e um punhado de **skills de processo** que garantem que qualquer um deles trabalhe do mesmo jeito: explora antes de decidir, planeja antes de codar, testa antes de implementar, verifica antes de dizer "pronto".
@@ -50,7 +56,6 @@ Este repositório publica esse sistema inteiro como um plugin do Claude Code: 15
 
 | Skill | O que faz |
 |---|---|
-| [`agent-architect`](docs/skills/agent-architect.md) | Guia estruturado para planejar a arquitetura de um agente de IA, camada por camada, com custo estimado. |
 | [`jet-brainstorm`](docs/skills/jet-brainstorm.md) | Transforma uma ideia solta em design aprovado pelo usuário, antes de qualquer linha de código. |
 | [`jet-plano`](docs/skills/jet-plano.md) | Transforma um spec aprovado em plano de implementação bite-sized, pronto para execução por subagentes. |
 | [`jet-subagentes`](docs/skills/jet-subagentes.md) | Executa um plano despachando um subagente por tarefa, com revisão em cada gate. |
@@ -68,22 +73,49 @@ passo". É o runbook em forma de skill.
 Uma feature não vira código direto. Ela passa por um funil de skills, com o `jet-maestro` orquestrando a entrega entre os agentes:
 
 ```mermaid
-flowchart LR
-    I[Ideia / pedido] --> B(jet-brainstorm)
-    B --> P(jet-plano)
-    P --> S(jet-subagentes)
-    S --> T(jet-tdd)
-    T --> V(jet-verificacao)
-    V --> R(jet-revisor)
-    R --> M[Pronto para merge]
+flowchart TB
+    I[Ideia ou pedido] --> B(jet-brainstorm)
+    B -->|design aprovado| P(jet-plano)
+    P -->|plano com campo Agente| S
 
-    O{{jet-maestro}} -. orquestra .-> S
-    O -. orquestra .-> T
-    O -. orquestra .-> V
-    O -. orquestra .-> R
+    subgraph S["jet-subagentes — uma volta por task"]
+        direction LR
+        D[despacha o agente<br/>da task] --> T(jet-tdd<br/>RED → GREEN → commit)
+        T --> R(jet-revisor<br/>spec + qualidade)
+        R -->|reprovou| D
+        R -->|dois vereditos limpos| L[linha no ledger]
+    end
+
+    S -->|todas as tasks| F(revisão final de branch)
+    F --> PR[PR aberto]
+    PR -.->|merge é do humano| M((GitHub))
+
+    V{{jet-verificacao}} -.->|evidência antes de<br/>qualquer alegação| S
+    V -.-> F
 ```
 
-Na prática: `jet-brainstorm` converge a ideia num design aprovado; `jet-plano` quebra o design em tasks bite-sized; `jet-subagentes` despacha um agente especialista por task; cada task roda em `jet-tdd` (RED → GREEN → REFACTOR); `jet-verificacao` bloqueia qualquer "terminei" sem evidência fresca; e `jet-revisor` audita o diff antes de seguir. O `jet-maestro` é quem fecha o loop sozinho quando o trabalho é autônomo — sem ele, o time roda sob comando direto do humano, um agente de cada vez.
+O `jet-revisor` e o `jet-tdd` não são estágios depois da execução — eles são **o que acontece dentro
+de cada volta**. A `jet-verificacao` é transversal: ela se aplica em todo ponto onde alguém vai
+dizer que algo está pronto. O `jet-maestro` conduz esse loop sozinho quando o trabalho é autônomo;
+sem ele, o time roda sob comando direto do humano, um agente por vez.
+
+O fluxo de operação completo está em **[`docs/RUNBOOK.md`](docs/RUNBOOK.md)**.
+
+## O que é garantido por máquina e o que é convenção
+
+Confundir as duas colunas é o jeito mais rápido de se machucar com este plugin.
+
+| Garantido por máquina | Convenção — o modelo pode furar |
+|---|---|
+| Merge, force-push, push em branch protegida e `gh pr merge` são **negados** | Passar por design antes de codar |
+| Deploy de produção, secrets, DNS, terraform e ação financeira **perguntam** antes | Um implementador por vez |
+| Redespachar task que o ledger marca como concluída é **negado** | Teste escrito antes do código |
+| Ledger e commits recentes são **reinjetados** após compactação | O teste ter falhado pelo motivo certo |
+| O revisor **não consegue** escrever arquivo; implementadores **não conseguem** delegar | Revisão em dois eixos por task |
+
+Os gates são o **piso**; o `jet-revisor` é o **teto**. Nenhum dos dois sozinho fecha — e **nada
+disso cobre o commit que você faz no seu próprio terminal**: isto é enforcement do caminho do
+agente, não do repositório.
 
 ---
 

@@ -107,8 +107,8 @@ digraph jet_brainstorm {
 
 **Documentação:**
 
-- Escreva o design validado (spec) em `.jet/sdd/specs/YYYY-MM-DD-<topico>-design.md`
-  - (Preferências do usuário sobre local do spec sobrescrevem esse padrão)
+- Escreva o design validado (spec) em `<JET_DOCS_PATH>/specs/YYYY-MM-DD-<topico>-design.md`
+  (default: `.jet/sdd/specs/`)
 - Faça commit do documento de design no git
 
 **Autorrevisão do spec:**
@@ -145,3 +145,5 @@ Aguarde a resposta do usuário. Se ele pedir mudanças, faça-as e rode a autorr
 ## Apoio visual (quando útil)
 
 Nem toda pergunta de design se beneficia de imagem, mas perguntas de layout, wireframe ou comparação visual costumam ficar mais claras mostradas do que descritas. Quando isso acontecer, ofereça montar um mockup rápido — como um artifact HTML, um diagrama (ex.: mermaid/dot) ou um ASCII wireframe direto na conversa — em vez de tentar descrever tudo em texto corrido. Use esse recurso pontualmente, só quando a pergunta for genuinamente visual (layout, diagrama de arquitetura, comparação lado a lado); perguntas conceituais ou de escopo continuam sendo resolvidas em texto.
+
+> Os caminhos `.jet/sdd/…` são o default. Se o projeto configurou `JET_DOCS_PATH` ou `JET_LEDGER_PATH` (na instalação do plugin ou em `.jet/config.json`), use o caminho configurado — o default vale só quando não há configuração.

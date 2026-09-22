@@ -47,13 +47,19 @@ A MIT License exige que o aviso de copyright acima e este aviso de permissão
 sejam incluídos em cópias ou partes substanciais do software — é o que este
 NOTICE cumpre para as cinco skills adaptadas listadas acima.
 
-agent-architect — original da JET (esclarecimento)
----------------------------------------------------
+agent-architect — removida desta distribuição
+---------------------------------------------
 
-`skills/agent-architect/` **não** deriva do Superpowers nem de nenhum outro
-toolkit externo. É conteúdo original da JET Digital, construído a partir do
-**Roteiro de IA Agêntica 2026** (as 9 camadas de arquitetura de agentes),
-metodologia própria da JET.
+A skill `agent-architect` (original da JET Digital, construída a partir do
+Roteiro de IA Agêntica 2026 — as 9 camadas de arquitetura de agentes) fazia
+parte deste repositório até a versão 1.0.0 e foi removida: ela não participava
+do funil spec → plano → execução, seu público é outro (proposta comercial), e
+seus dados de custo exigem um ciclo de atualização próprio.
+
+O conteúdo permanece íntegro no histórico do git, no commit db12f21, e pode ser
+recuperado a qualquer momento:
+
+    git show db12f21:skills/agent-architect/SKILL.md
 
 Demais agentes
 ---------------

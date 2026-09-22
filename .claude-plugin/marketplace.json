@@ -1,0 +1,20 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "jet-skills",
+  "description": "Time de agentes e skills de processo para tocar projetos de dev e de agencia com Claude Code.",
+  "owner": {
+    "name": "JET Digital",
+    "email": "contato@wearejet.digital"
+  },
+  "plugins": [
+    {
+      "name": "jet-skills",
+      "description": "15 agentes especializados e 6 skills de processo, com gates que rodam como hooks: merge e force-push negados, acao irreversivel perguntando antes, ledger reancorado apos compactacao e redespacho de task concluida bloqueado.",
+      "source": "./",
+      "category": "development",
+      "author": { "name": "JET Digital" },
+      "homepage": "https://wearejet.digital",
+      "keywords": ["agentes", "tdd", "code-review", "spec-driven", "orquestracao", "pt-br"]
+    }
+  ]
+}

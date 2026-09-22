@@ -288,7 +288,7 @@ o erro mais caro observado. Rastreie o progresso num arquivo de ledger, não
 só na todo list.
 
 - No início da execução, verifique se já existe um ledger de progresso
-  (ex.: `.jet/sdd/progress.md` na raiz do projeto). Tasks lá marcadas como
+  (o caminho de `JET_LEDGER_PATH`; default `.jet/sdd/progress.md`). Tasks lá marcadas como
   concluídas estão CONCLUIDO — não redespache; retome na primeira task não
   marcada.
 - Quando a revisão de uma task vier limpa, adicione uma linha ao ledger na

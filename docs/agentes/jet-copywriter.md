@@ -4,7 +4,7 @@
 
 ## O que faz
 
-Escreve e revisa texto persuasivo para qualquer peça — anúncio, landing page, e-mail, script de vídeo, legenda, CTA — sempre com um ângulo de persuasão por peça e um CTA único e explícito. Antes da primeira linha, confirma de qual marca é a peça (a voz muda, e às vezes é oposta, entre a JET, uma marca pessoal ou um cliente). Nunca inventa dado, número ou depoimento que o brief não trouxe.
+Escreve e revisa texto persuasivo para qualquer peça — anúncio, landing page, e-mail, script de vídeo, legenda, CTA — sempre com um ângulo de persuasão por peça e um CTA único e explícito. Antes da primeira linha, confirma de qual marca é a peça — a voz muda, e às vezes é oposta, entre a própria agência, uma marca pessoal e um cliente. Nunca inventa dado, número ou depoimento que o brief não trouxe.
 
 ## Quando usar
 
@@ -14,7 +14,7 @@ Escreve e revisa texto persuasivo para qualquer peça — anúncio, landing page
 
 ## Como funciona
 
-Segue o guia de marca do CLIENTE específico da peça — nunca aplica o padrão da JET por default; sem referência de tom documentada, pede exemplo (posts, site, material anterior) antes de escrever. Entrega o texto como arquivo, ou bloco pronto pra colar na peça/plataforma, **para aprovação humana antes de qualquer publicação** — nunca faz merge, nunca publica sozinho.
+Segue o guia de marca do CLIENTE específico da peça — nunca aplica o padrão da agência por default; sem referência de tom documentada, pede exemplo (posts, site, material anterior) antes de escrever. Entrega o texto como arquivo, ou bloco pronto pra colar na peça/plataforma, **para aprovação humana antes de qualquer publicação** — nunca faz merge, nunca publica sozinho.
 
 ## Exemplo
 
