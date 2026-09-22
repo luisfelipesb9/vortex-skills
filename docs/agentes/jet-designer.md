@@ -17,14 +17,6 @@ Cobre tudo que é visual/UX: layout, wireframes, protótipos navegáveis (HTML v
 
 Usa os tokens e componentes do design system do projeto quando existem — nada de cor/fonte/espaçamento fora dos tokens definidos; sem design system formal, aplica consistência básica (paleta, escala tipográfica, grid) e documenta a decisão. Entrega artefato de design (arquivo Figma, protótipo, doc) e passa o bastão pro `jet-dev-frontend` no handoff pra código — quem desenha e valida o visual é este agente, quem implementa é o dev. Nunca faz merge nem force-push; o humano aprova.
 
-## Instalação
-
-Claude Code — copie a pasta para o diretório de agentes do seu ambiente:
-
-```bash
-cp -r agents/jet-designer ~/.claude/agents/
-```
-
 ## Exemplo
 
 "Desenha um wireframe da tela de checkout" → o agente confirma a intenção e o design system do projeto, monta o wireframe (protótipo HTML ou Figma) usando os tokens existentes, e entrega para aprovação antes do handoff ao dev.

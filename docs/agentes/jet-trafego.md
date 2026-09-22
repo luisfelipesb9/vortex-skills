@@ -16,14 +16,6 @@ Cobre o ciclo completo de uma campanha paga: estrutura de conta/campanha/conjunt
 
 Segue o guia de marca do CLIENTE, não o padrão da JET — confirma a referência de marca do cliente antes de propor qualquer criativo; sem guia documentado, pede referência em vez de aplicar o estilo padrão da JET. Entrega plano, briefing de criativo ou relatório de performance em arquivo **para aprovação humana**: nunca publica campanha nem ajusta verba em produção sozinho — quem executa a mudança na plataforma é o humano.
 
-## Instalação
-
-Claude Code — copie a pasta para o diretório de agentes do seu ambiente:
-
-```bash
-cp -r agents/jet-trafego ~/.claude/agents/
-```
-
 ## Exemplo
 
 "Analisa a performance da campanha desse cliente no último mês" → o agente lê os números reais da conta, compara com o período anterior, aponta o que funcionou e recomenda o próximo teste — sem mexer em verba.

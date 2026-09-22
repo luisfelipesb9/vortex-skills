@@ -13,7 +13,23 @@ Escreva o teste primeiro. Veja-o falhar pelo motivo certo. Escreva o código mí
 
 **Violar a letra da regra é violar o espírito da regra.** Não existe "TDD só no espírito".
 
-Esta skill é o padrão de execução de código de qualquer task do time de agentes da JET — usada por `jet-implementador`, `jet-dev-backend`, `jet-dev-frontend`, `jet-dev-dados` e demais especialistas do time dev. `jet-revisor` cobra evidência de que o ciclo abaixo foi seguido; `jet-subagentes` é quem despacha a task que aciona esta skill.
+Esta skill é o padrão de execução de código de qualquer task do time de agentes da JET. Ela vem **pré-carregada** no frontmatter de `jet-implementador`, `jet-dev-backend`, `jet-dev-frontend` e `jet-dev-dados` (campo `skills:`) — eles não escolhem carregá-la, ela já está no contexto quando a task começa. `jet-revisor` cobra evidência de que o ciclo abaixo foi seguido; `jet-subagentes` é quem despacha a task que aciona esta skill.
+
+## O que é cobrado por máquina e o que depende de você
+
+Ser honesto sobre essa fronteira não enfraquece a disciplina — é o que a torna confiável. Um repositório que promete invariante e entrega heurística destrói a confiança também na parte que **é** dura.
+
+| | Quem garante |
+|---|---|
+| A skill estar carregada quando você começa a task | **Mecânica** — `skills:` no frontmatter do agente |
+| Você não conseguir delegar a task para outro agente | **Mecânica** — `disallowedTools: ["Agent"]` |
+| Merge, force-push e push em branch protegida | **Mecânica** — hook de fronteiras, nega antes de executar |
+| Teste escrito **antes** do código de produção | **Você.** Nenhum script observa isso hoje |
+| O teste ter falhado **pelo motivo certo** | **Você.** É julgamento semântico, não mecanizável |
+| O teste que falhou cobrir **este** código | **Você.** Provar isso exigiria cobertura por teste a cada ciclo |
+| Teste sem asserção real, tautológico ou acoplado à implementação | **`jet-revisor`**, na revisão por task |
+
+Os gates mecânicos são o **piso**; o `jet-revisor` é o **teto**. Nenhum dos dois sozinho fecha — e no meio, entre um e outro, está a disciplina que esta skill descreve. É por isso que ela é escrita como lei e não como sugestão.
 
 ## Quando usar
 

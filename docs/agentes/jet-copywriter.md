@@ -16,14 +16,6 @@ Escreve e revisa texto persuasivo para qualquer peça — anúncio, landing page
 
 Segue o guia de marca do CLIENTE específico da peça — nunca aplica o padrão da JET por default; sem referência de tom documentada, pede exemplo (posts, site, material anterior) antes de escrever. Entrega o texto como arquivo, ou bloco pronto pra colar na peça/plataforma, **para aprovação humana antes de qualquer publicação** — nunca faz merge, nunca publica sozinho.
 
-## Instalação
-
-Claude Code — copie a pasta para o diretório de agentes do seu ambiente:
-
-```bash
-cp -r agents/jet-copywriter ~/.claude/agents/
-```
-
 ## Exemplo
 
 "Escreve o anúncio de topo de funil pro Instagram desse cliente" → o agente confirma o guia de marca do cliente, escolhe um ângulo de persuasão, escreve o gancho e um CTA único, e entrega o texto em arquivo para aprovação.

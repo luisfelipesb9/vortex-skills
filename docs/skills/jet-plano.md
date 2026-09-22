@@ -20,14 +20,6 @@ Pega o design/spec aprovado (saída da `jet-brainstorm`) e escreve um plano de i
 5. Roda uma autorrevisão contra o spec — cobertura de requisito, varredura de placeholder, consistência de tipos/nomes entre tarefas — e corrige inline.
 6. Estado terminal: entrega o plano salvo em arquivo e recomenda a skill `jet-subagentes` para a execução.
 
-## Instalação
-
-Claude Code — copie a pasta para o diretório de skills do seu ambiente:
-
-```bash
-cp -r skills/jet-plano ~/.claude/skills/
-```
-
 ## Exemplo
 
 "Temos o spec do sistema de notificações, vamos gerar o plano" → a skill mapeia os arquivos, quebra o trabalho em tarefas com teste e commit já definidos, e entrega o plano pronto para a `jet-subagentes` executar.

@@ -22,14 +22,6 @@ Conduz, em diálogo natural, a passagem de uma ideia solta para um spec de desig
 6. Pede que o usuário revise o spec escrito — só segue adiante com aprovação explícita.
 7. Estado terminal: invoca a skill `jet-plano`. Nenhuma skill de implementação é acionada antes da aprovação do usuário.
 
-## Instalação
-
-Claude Code — copie a pasta para o diretório de skills do seu ambiente:
-
-```bash
-cp -r skills/jet-brainstorm ~/.claude/skills/
-```
-
 ## Exemplo
 
 "Quero adicionar um sistema de notificações por e-mail" → a skill explora o projeto, faz perguntas uma de cada vez, propõe abordagens, escreve e commita o spec, pede a revisão do usuário e só então aciona a `jet-plano`.

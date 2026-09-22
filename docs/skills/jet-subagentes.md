@@ -20,14 +20,6 @@ Executa um plano de implementação tarefa por tarefa, despachando um subagente 
 5. Se algum veredito reprovar, despacha uma correção e revisa de novo; só marca a tarefa concluída no ledger de progresso quando os dois vierem aprovados.
 6. Estado terminal: depois de todas as tarefas, despacha uma revisão final de toda a branch e segue para a integração conforme o fluxo do projeto — nunca inicia implementação na branch principal sem consentimento explícito do humano, e nunca mergeia sozinha.
 
-## Instalação
-
-Claude Code — copie a pasta para o diretório de skills do seu ambiente:
-
-```bash
-cp -r skills/jet-subagentes ~/.claude/skills/
-```
-
 ## Exemplo
 
 "Roda o plano de notificações com subagentes" → a skill despacha um `jet-implementador` por tarefa, revisa cada diff com `jet-revisor`, resolve os achados e fecha com uma revisão final de toda a branch antes do merge.

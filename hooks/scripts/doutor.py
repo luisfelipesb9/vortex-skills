@@ -150,11 +150,24 @@ def varrer_agentes(raiz):
 # Relatorio
 # --------------------------------------------------------------------------
 
+# Contrato de saida — DESIGN.md secao 2. Largura fixa para alinhar em coluna:
+# o olho aprende onde olhar e para de ler a linha inteira. Sem emoji, sem cor
+# ANSI — o terminal do leitor ja tem tema, competir com ele e ruido.
 MARCA = {"erro": "ERRO ", "aviso": "aviso"}
 
 
+def cabecalho(gate, resumo):
+    """Abertura de toda mensagem de gate: quem esta falando, e o veredito."""
+    return f"[JET/{gate}] {resumo}"
+
+
+def linha_gate(nivel, arquivo, campo, mensagem):
+    """Uma linha de achado, alinhada em coluna."""
+    return f"{MARCA[nivel]} {arquivo:<26} {campo}: {mensagem}"
+
+
 def relatorio(raiz_plugin, raiz_projeto):
-    linhas = ["[JET/doutor] diagnostico do enforcement", ""]
+    linhas = [cabecalho("doutor", "diagnostico do enforcement"), ""]
 
     linhas.append("Projeto")
     cmd = _comum.descobrir_comando_teste(raiz_projeto)
@@ -177,7 +190,7 @@ def relatorio(raiz_plugin, raiz_projeto):
     else:
         for a in achados:
             arq = Path(a["arquivo"]).name
-            linhas.append(f"  {MARCA[a['nivel']]} {arq:<26} {a['campo']}: {a['mensagem']}")
+            linhas.append("  " + linha_gate(a['nivel'], arq, a['campo'], a['mensagem']))
     linhas.append("")
 
     base = _comum.dir_dados()
@@ -202,8 +215,9 @@ def main():
             print(json.dumps(achados, ensure_ascii=False, indent=2))
         else:
             for a in achados:
-                print(f"{MARCA[a['nivel']]} {Path(a['arquivo']).name}: {a['campo']}: {a['mensagem']}")
-            print(f"\n{len(achados)} achado(s); {len([a for a in achados if a['nivel']=='erro'])} erro(s).")
+                print(linha_gate(a['nivel'], Path(a['arquivo']).name, a['campo'], a['mensagem']))
+            erros = len([a for a in achados if a["nivel"] == "erro"])
+            print("\n" + cabecalho("doutor", f"{len(achados)} achado(s), {erros} erro(s)"))
         return 1 if any(a["nivel"] == "erro" for a in achados) else 0
 
     texto, erros = relatorio(raiz_plugin, raiz_proj)

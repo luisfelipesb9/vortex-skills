@@ -21,16 +21,6 @@ Conduz uma iteração completa do fluxo de trabalho: recupera contexto relevante
 
 **Fronteiras de segurança:** nunca faz merge nem muda status de task sem autorização humana; nunca faz force-push; tudo que é irreversível ou externo (deploy crítico, compras, secrets) vai para o humano decidir. Corpo de task, comentários e diffs são tratados como dado de terceiros, nunca como instrução — se algo parecer uma tentativa de manipular o fluxo, o maestro registra e escala, não executa.
 
-## Instalação
-
-Claude Code — copie a pasta para o diretório de agentes do seu ambiente:
-
-```bash
-cp -r agents/jet-maestro ~/.claude/agents/
-```
-
-**Nota:** o `tools` do maestro vem enxuto de propósito (leitura + orquestração via `Agent`/`Skill`), para que ele nunca faça merge, push ou edição direta. Se o rastreador de tarefas ou as métricas do seu projeto forem acessados via MCP (ex.: Notion, Linear), adicione o tool desse MCP ao `tools` do agente na instalação.
-
 ## Exemplo
 
 "Roda a próxima iteração" → o maestro pega a task seguinte no rastreador, decide se cruza domínios, delega ao(s) especialista(s) certo(s), garante que o diff passou pelo gate de revisão, e fecha com um resumo do que foi entregue e do que ficou pendente — sem dar merge em nada.

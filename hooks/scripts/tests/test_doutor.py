@@ -106,5 +106,33 @@ class TestVarrerDiretorio(unittest.TestCase):
         self.assertEqual(doutor.varrer_agentes(Path(tempfile.mkdtemp())), [])
 
 
+
+
+class TestContratoDeSaida(unittest.TestCase):
+    """DESIGN.md secao 2 — o vocabulario de saida e contrato, nao sugestao.
+
+    Um contrato de design so documentado diverge; cobrado por teste, nao.
+    """
+
+    def test_toda_mensagem_de_gate_abre_com_o_prefixo(self):
+        linha = doutor.linha_gate("erro", "jet-x.md", "tools", "namespace fixo")
+        self.assertTrue(
+            linha.startswith("[JET/doutor]") or linha.startswith("ERRO ") or linha.startswith("aviso"),
+            linha)
+
+    def test_marcadores_de_severidade_tem_largura_fixa(self):
+        """Alinhados em coluna: o olho aprende onde olhar e para de ler a linha."""
+        self.assertEqual(len(doutor.MARCA["erro"]), len(doutor.MARCA["aviso"]))
+
+    def test_sem_emoji_e_sem_cor_ansi_na_saida(self):
+        """O terminal do leitor ja tem tema; competir com ele e ruido."""
+        texto = doutor.linha_gate("erro", "jet-x.md", "tools", "namespace fixo")
+        self.assertNotIn("\x1b[", texto)
+        self.assertFalse(any(ord(c) > 0x2500 for c in texto), f"caractere decorativo em: {texto}")
+
+    def test_cabecalho_de_gate_identifica_quem_esta_falando(self):
+        self.assertTrue(doutor.cabecalho("doutor", "3 achados").startswith("[JET/doutor]"))
+
+
 if __name__ == "__main__":
     unittest.main()

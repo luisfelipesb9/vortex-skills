@@ -16,14 +16,6 @@ Lê e interpreta dado de negócio já modelado (GA4, dashboard de campanha, rela
 
 Distinto do `jet-dev-dados` (schema/SQL/performance de banco Postgres): este agente lê e interpreta dado de negócio já modelado, não mexe em schema. Entrega relatório ou dashboard como arquivo versionado; nunca faz merge. Nunca inventa número — integração fora do ar ou dado ausente é sinalizado explicitamente, nunca preenchido com estimativa disfarçada de dado real.
 
-## Instalação
-
-Claude Code — copie a pasta para o diretório de agentes do seu ambiente:
-
-```bash
-cp -r agents/jet-analista-dados ~/.claude/agents/
-```
-
 ## Exemplo
 
 "Por que o CPL desse cliente subiu no último mês?" → o agente confirma fonte e período do dado, compara com o baseline, separa correlação de causa, e entrega a leitura com recomendação em arquivo.

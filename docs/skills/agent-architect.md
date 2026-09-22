@@ -20,14 +20,6 @@ Conduz o usuário por um roteiro de 9 camadas (segurança, monitoramento, memór
 3. Percorre as 9 camadas do roteiro uma a uma: diz o que é obrigatório ou opcional para aquele projeto e recomenda 1 ferramenta principal (no máximo 1 alternativa), consultando `references/camadas.md` e `references/ferramentas-custo.md`.
 4. Ao final, gera o checklist de decisões e o README técnico como arquivos `.md`, usando os templates de `assets/checklist-template.md` e `assets/readme-template.md` preenchidos com as decisões reais da conversa.
 
-## Instalação
-
-Claude Code — copie a pasta para o diretório de skills do seu ambiente:
-
-```bash
-cp -r skills/agent-architect ~/.claude/skills/
-```
-
 ## Exemplo
 
 "Quero montar um bot de atendimento no WhatsApp com n8n" → a skill pergunta o contexto do projeto, classifica o porte, percorre as camadas recomendando ferramentas com custo, e fecha entregando `checklist-<nome>.md` e `README-<nome>.md`.

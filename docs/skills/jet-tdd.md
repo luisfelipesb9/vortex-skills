@@ -21,14 +21,6 @@ Define o padrão de Test-Driven Development do time de agentes da JET: teste pri
 5. **REFACTOR** — limpa duplicação e nomes mantendo os testes verdes, sem introduzir comportamento novo.
 6. **Commit** — fecha o ciclo com Conventional Commits e volta ao passo 1 para a próxima fatia de comportamento.
 
-## Instalação
-
-Claude Code — copie a pasta para o diretório de skills do seu ambiente:
-
-```bash
-cp -r skills/jet-tdd ~/.claude/skills/
-```
-
 ## Exemplo
 
 "Corrige o bug do e-mail vazio aceito no formulário" → a skill escreve um teste que falha reproduzindo o bug, vê o RED, implementa a validação mínima, vê o GREEN e só então comita.

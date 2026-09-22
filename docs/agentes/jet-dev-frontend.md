@@ -18,14 +18,6 @@ Implementa uma task de front-end no framework do projeto atual (React/Next, Vue,
 
 Segue o fluxo TDD do time (o `jet-implementador` é a referência do processo: brief → seams → RED → GREEN → suíte → commit → report). Usa o design system do projeto quando existir — nada de cor/fonte/espaçamento hardcoded fora dos tokens. Trabalha em UMA task por vez, entrega via commit na branch com Conventional Commits — **nunca faz merge nem force-push**. Nunca edita arquivos de outra especialidade em paralelo com outro agente.
 
-## Instalação
-
-Claude Code — copie a pasta para o diretório de agentes do seu ambiente:
-
-```bash
-cp -r agents/jet-dev-frontend ~/.claude/agents/
-```
-
 ## Exemplo
 
 "Adiciona validação de formulário no cadastro" → o agente escreve o teste E2E que falha pro fluxo de erro, vê o RED, implementa a validação com acessibilidade (labels, ARIA), vê o GREEN e comita na branch.

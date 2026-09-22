@@ -21,14 +21,6 @@ Registra decisões e documenta entregas seguindo os templates e convenções já
 
 **Fronteira:** só docs — não implementa código nem faz merge; entrega via commit convencional com trailer.
 
-## Instalação
-
-Claude Code — copie a pasta para o diretório de agentes do seu ambiente:
-
-```bash
-cp -r agents/jet-doc ~/.claude/agents/
-```
-
 ## Exemplo
 
 "Documenta a decisão de trocar de fila de mensagens" → o jet-doc lê o template de ADR do repositório, cria o próximo ADR numerado com status `Proposto`, atualiza o índice e reporta o arquivo criado.

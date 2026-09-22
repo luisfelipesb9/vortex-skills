@@ -17,14 +17,6 @@ Pesquisa palavra-chave e intenção de busca, analisa a SERP real dos concorrent
 
 É o papel oficial do time para SEO; para pipelines de research profundo com ferramentas externas dedicadas, use um agente especializado nesse fluxo. Entrega brief, artigo ou cluster como arquivo versionado no repo ou pasta do projeto; nunca faz merge. Sem placeholder/TBD no artigo final e sem keyword stuffing.
 
-## Instalação
-
-Claude Code — copie a pasta para o diretório de agentes do seu ambiente:
-
-```bash
-cp -r agents/jet-seo ~/.claude/agents/
-```
-
 ## Exemplo
 
 "Estrutura um brief de artigo sobre [tópico] pro blog do cliente" → o agente pesquisa keyword e intenção, analisa a SERP, e entrega título, meta tags, estrutura de H1-H3 e CTA em arquivo.

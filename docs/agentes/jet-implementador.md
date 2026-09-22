@@ -17,14 +17,6 @@ Implementa exatamente uma task a partir de um brief: identifica o seam (interfac
 
 Fluxo fixo por task: brief → seam → RED → GREEN → verificação (typecheck/lint contínuo, suíte completa uma vez antes de comitar) → auto-revisão → report (status, commits, resumo dos testes, ressalvas). Trabalha em UMA task por vez, entrega via commit na branch com Conventional Commits e trailer `Co-Authored-By` — **nunca faz merge nem force-push**. Não constrói além da task (YAGNI); se travar, reporta BLOQUEADO/FALTA_CONTEXTO em vez de adivinhar.
 
-## Instalação
-
-Claude Code — copie a pasta para o diretório de agentes do seu ambiente:
-
-```bash
-cp -r agents/jet-implementador ~/.claude/agents/
-```
-
 ## Exemplo
 
 "Implementa a task 3 do plano: exportar relatório em CSV" → o agente lê o brief, escreve o teste que falha pro seam de exportação, vê o RED, implementa o mínimo, vê o GREEN, roda a suíte e comita — sem mergear.

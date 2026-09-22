@@ -21,14 +21,6 @@ Investiga um tema técnico a fundo na web — várias buscas, leitura de fontes 
 
 **Fronteira de segurança:** só lê e escreve relatório — não tem acesso a ferramentas de edição de código nem de execução de comando; a decisão final é de quem recebe o relatório.
 
-## Instalação
-
-Claude Code — copie a pasta para o diretório de agentes do seu ambiente:
-
-```bash
-cp -r agents/jet-pesquisador ~/.claude/agents/
-```
-
 ## Exemplo
 
 "Pesquisa as opções de fila de mensagens para esse projeto antes da gente decidir" → o pesquisador levanta 3–5 opções com fontes, aponta trade-offs e maturidade de cada uma, e recomenda a de maior alavancagem para o contexto.

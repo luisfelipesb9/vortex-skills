@@ -22,14 +22,6 @@ Revisa o diff de UMA task contra o spec original e contra um baseline de qualida
 
 **Fronteira de segurança:** somente leitura — não altera a árvore de arquivos, não aprova nem mergeia. É um gate consultivo: quem decide seguir ou não é o humano ou o próximo passo do fluxo.
 
-## Instalação
-
-Claude Code — copie a pasta para o diretório de agentes do seu ambiente:
-
-```bash
-cp -r agents/jet-revisor ~/.claude/agents/
-```
-
 ## Exemplo
 
 "Revisa o diff da task 3 antes de eu abrir o PR" → o revisor confirma a intenção da task, roda a comparação de spec, depois qualidade e segurança, e devolve os dois vereditos com findings acionáveis — sem tocar em nenhum arquivo.

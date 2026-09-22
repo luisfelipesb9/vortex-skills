@@ -16,31 +16,31 @@ Este repositório publica esse sistema inteiro: 15 agentes e 6 skills, prontos p
 
 | Agente | O que faz |
 |---|---|
-| [`jet-dev-backend`](agents/jet-dev-backend/) | Lógica de servidor, APIs e serviços — TDD do início ao fim, na stack de backend do projeto. |
-| [`jet-dev-frontend`](agents/jet-dev-frontend/) | HTML/CSS/JavaScript e o framework do projeto — UI, acessibilidade e testes E2E, em TDD. |
-| [`jet-dev-dados`](agents/jet-dev-dados/) | PostgreSQL: schema, migrações, índices e performance de query, sempre com baseline medido antes/depois. |
-| [`jet-dev-devops`](agents/jet-dev-devops/) | Containers, CI/CD e deploy — infra como código, rollback documentado antes de qualquer deploy. |
-| [`jet-implementador`](agents/jet-implementador/) | Generalista do time dev — implementa uma task de um plano em TDD, sem especialidade fixa. |
+| [`jet-dev-backend`](docs/agentes/jet-dev-backend.md) | Lógica de servidor, APIs e serviços — TDD do início ao fim, na stack de backend do projeto. |
+| [`jet-dev-frontend`](docs/agentes/jet-dev-frontend.md) | HTML/CSS/JavaScript e o framework do projeto — UI, acessibilidade e testes E2E, em TDD. |
+| [`jet-dev-dados`](docs/agentes/jet-dev-dados.md) | PostgreSQL: schema, migrações, índices e performance de query, sempre com baseline medido antes/depois. |
+| [`jet-dev-devops`](docs/agentes/jet-dev-devops.md) | Containers, CI/CD e deploy — infra como código, rollback documentado antes de qualquer deploy. |
+| [`jet-implementador`](docs/agentes/jet-implementador.md) | Generalista do time dev — implementa uma task de um plano em TDD, sem especialidade fixa. |
 
 ### Agência
 
 | Agente | O que faz |
 |---|---|
-| [`jet-copywriter`](agents/jet-copywriter/) | Copy de anúncio, página, e-mail e CTA — ângulo de persuasão e tom de voz por marca. |
-| [`jet-trafego`](agents/jet-trafego/) | Estrutura de campanha, criativos, segmentação e leitura de métrica em Meta Ads e Google Ads. |
-| [`jet-seo`](agents/jet-seo/) | Pesquisa de keyword, briefs de artigo, clusters de conteúdo e otimização on-page. |
-| [`jet-designer`](agents/jet-designer/) | Layout, wireframes, protótipos navegáveis, Figma e design system. |
-| [`jet-analista-dados`](agents/jet-analista-dados/) | Dashboards, GA4 e relatório de performance traduzido em insight de negócio. |
-| [`jet-gestor-projetos`](agents/jet-gestor-projetos/) | Transforma pedido de cliente em tarefas com dono e prazo, acompanha status e destrava bloqueio. |
+| [`jet-copywriter`](docs/agentes/jet-copywriter.md) | Copy de anúncio, página, e-mail e CTA — ângulo de persuasão e tom de voz por marca. |
+| [`jet-trafego`](docs/agentes/jet-trafego.md) | Estrutura de campanha, criativos, segmentação e leitura de métrica em Meta Ads e Google Ads. |
+| [`jet-seo`](docs/agentes/jet-seo.md) | Pesquisa de keyword, briefs de artigo, clusters de conteúdo e otimização on-page. |
+| [`jet-designer`](docs/agentes/jet-designer.md) | Layout, wireframes, protótipos navegáveis, Figma e design system. |
+| [`jet-analista-dados`](docs/agentes/jet-analista-dados.md) | Dashboards, GA4 e relatório de performance traduzido em insight de negócio. |
+| [`jet-gestor-projetos`](docs/agentes/jet-gestor-projetos.md) | Transforma pedido de cliente em tarefas com dono e prazo, acompanha status e destrava bloqueio. |
 
 ### Processo
 
 | Agente | O que faz |
 |---|---|
-| [`jet-maestro`](agents/jet-maestro/) | Orquestra o loop autônomo do time — pega a próxima task, delega ao especialista certo, registra o resultado. |
-| [`jet-revisor`](agents/jet-revisor/) | Revisa o diff de uma task em dois eixos — conformidade com o spec e qualidade/segurança — só leitura. |
-| [`jet-pesquisador`](agents/jet-pesquisador/) | Deep research multi-fonte na web, verificado de forma adversarial, com relatório citado. |
-| [`jet-doc`](agents/jet-doc/) | Escreve e atualiza documentação de engenharia — ADR, README, PRD, runbooks. |
+| [`jet-maestro`](docs/agentes/jet-maestro.md) | Orquestra o loop autônomo do time — pega a próxima task, delega ao especialista certo, registra o resultado. |
+| [`jet-revisor`](docs/agentes/jet-revisor.md) | Revisa o diff de uma task em dois eixos — conformidade com o spec e qualidade/segurança — só leitura. |
+| [`jet-pesquisador`](docs/agentes/jet-pesquisador.md) | Deep research multi-fonte na web, verificado de forma adversarial, com relatório citado. |
+| [`jet-doc`](docs/agentes/jet-doc.md) | Escreve e atualiza documentação de engenharia — ADR, README, PRD, runbooks. |
 
 ---
 
@@ -50,12 +50,12 @@ Este repositório publica esse sistema inteiro: 15 agentes e 6 skills, prontos p
 
 | Skill | O que faz |
 |---|---|
-| [`agent-architect`](skills/agent-architect/) | Guia estruturado para planejar a arquitetura de um agente de IA, camada por camada, com custo estimado. |
-| [`jet-brainstorm`](skills/jet-brainstorm/) | Transforma uma ideia solta em design aprovado pelo usuário, antes de qualquer linha de código. |
-| [`jet-plano`](skills/jet-plano/) | Transforma um spec aprovado em plano de implementação bite-sized, pronto para execução por subagentes. |
-| [`jet-subagentes`](skills/jet-subagentes/) | Executa um plano despachando um subagente por tarefa, com revisão em cada gate. |
-| [`jet-tdd`](skills/jet-tdd/) | Impõe o ciclo RED → GREEN → REFACTOR → commit em qualquer mudança de código. |
-| [`jet-verificacao`](skills/jet-verificacao/) | Exige evidência de verificação fresca — comando rodado e output lido — antes de qualquer alegação de "pronto". |
+| [`agent-architect`](docs/skills/agent-architect.md) | Guia estruturado para planejar a arquitetura de um agente de IA, camada por camada, com custo estimado. |
+| [`jet-brainstorm`](docs/skills/jet-brainstorm.md) | Transforma uma ideia solta em design aprovado pelo usuário, antes de qualquer linha de código. |
+| [`jet-plano`](docs/skills/jet-plano.md) | Transforma um spec aprovado em plano de implementação bite-sized, pronto para execução por subagentes. |
+| [`jet-subagentes`](docs/skills/jet-subagentes.md) | Executa um plano despachando um subagente por tarefa, com revisão em cada gate. |
+| [`jet-tdd`](docs/skills/jet-tdd.md) | Impõe o ciclo RED → GREEN → REFACTOR → commit em qualquer mudança de código. |
+| [`jet-verificacao`](docs/skills/jet-verificacao.md) | Exige evidência de verificação fresca — comando rodado e output lido — antes de qualquer alegação de "pronto". |
 
 ---
 
@@ -85,21 +85,27 @@ Na prática: `jet-brainstorm` converge a ideia num design aprovado; `jet-plano` 
 
 ## Como instalar
 
-Funciona com Claude Code. Copie a pasta do agente ou da skill para o diretório correspondente do seu ambiente:
+É um plugin do Claude Code. Dois comandos, e atualizar depois é `/plugin update`:
 
 ```bash
-# um agente
-cp -r agents/jet-dev-backend ~/.claude/agents/
-
-# uma skill
-cp -r skills/jet-tdd ~/.claude/skills/
-
-# o time inteiro
-cp -r agents/* ~/.claude/agents/
-cp -r skills/* ~/.claude/skills/
+/plugin marketplace add wearejet/jet-skills
 ```
 
-Cada agente e cada skill tem seu próprio README com o que faz, quando usar e um exemplo — comece por ali antes de instalar.
+```bash
+/plugin install jet-skills
+```
+
+Na instalação o Claude Code pergunta a severidade de cada gate e os caminhos do projeto — todos
+têm default razoável, pode aceitar tudo e ajustar depois com `/jet-doutor`.
+
+Para conferir que ficou de pé:
+
+```bash
+/jet-doutor
+```
+
+Cada agente e cada skill tem uma página em [`docs/`](docs/) com o que faz, quando usar e um
+exemplo.
 
 ---
 

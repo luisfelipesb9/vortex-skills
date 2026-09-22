@@ -20,14 +20,6 @@ Bloqueia qualquer alegação de conclusão, correção ou sucesso — própria o
 4. Compara o output com a alegação: se não confirma, declara o estado real e a lacuna encontrada.
 5. Só então faz a alegação, sempre acompanhada da evidência que a sustenta.
 
-## Instalação
-
-Claude Code — copie a pasta para o diretório de skills do seu ambiente:
-
-```bash
-cp -r skills/jet-verificacao ~/.claude/skills/
-```
-
 ## Exemplo
 
 Um subagente reporta "task concluída, testes passam" → a skill exige rodar o comando de teste de novo e conferir o diff do VCS antes de aceitar o relatório como fato.

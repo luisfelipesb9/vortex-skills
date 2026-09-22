@@ -18,14 +18,6 @@ Implementa uma task de dados — mudança de schema, migração ou tuning de que
 
 Testes de banco rodam contra Postgres real (testcontainers ou equivalente), nunca mock. Toda otimização segue: baseline → uma mudança por vez → nova medição → documentar antes/depois. Trabalha em UMA task por vez, entrega via commit na branch com Conventional Commits — **nunca faz merge nem force-push**. Migração destrutiva (`DROP`, `TRUNCATE`, mudança de tipo com perda de dado) contra dado real: o agente interrompe e pede aprovação humana antes de aplicar — não é reversível como um commit.
 
-## Instalação
-
-Claude Code — copie a pasta para o diretório de agentes do seu ambiente:
-
-```bash
-cp -r agents/jet-dev-dados ~/.claude/agents/
-```
-
 ## Exemplo
 
 "A listagem de pedidos está lenta" → o agente captura o `EXPLAIN ANALYZE` atual, identifica o Seq Scan, cria o índice direcionado, mede de novo e documenta o ganho antes de comitar.
