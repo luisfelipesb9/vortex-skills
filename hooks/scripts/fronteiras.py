@@ -28,11 +28,11 @@ ISENTO = [
 
 # Irreversivel e explicitamente proibido pelo metodo do time: nega.
 NEGAR = [
-    (re.compile(r"\bgit\s+(-C\s+\S+\s+)?merge\b"), "merge",
+    (re.compile(r"\bgit\s+(-C\s+\S+\s+)?merge(?![-\w])"), "merge",
      "O time entrega via PR; merge e gate humano. Abra o PR (gh pr create) e pare."),
     (re.compile(r"\bgit\b[^;&|]*\bpush\b[^;&|]*(--force\b|--force-with-lease\b|\s-f\b)"), "force-push",
      "Force-push reescreve historico compartilhado. Se precisa mesmo, e decisao do humano."),
-    (re.compile(r"\bgit\b[^;&|]*\bpush\b[^;&|]*\b(origin\s+)?(main|master|prod|producao)\b"),
+    (re.compile(r"\bgit\b[^;&|]*\bpush\b[^;&|]*(?<![\w/-])(main|master|prod|producao)(?![\w/-])"),
      "push em branch protegida",
      "Entregue numa branch de feature e abra o PR (gh pr create)."),
     (re.compile(r"\bgh\s+pr\s+merge\b"), "merge de PR",

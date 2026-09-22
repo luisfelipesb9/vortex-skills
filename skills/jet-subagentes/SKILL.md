@@ -65,10 +65,49 @@ Para cada task, nesta ordem:
    quando ambos os vereditos vierem aprovados.
 7. Passe para a próxima task.
 
-Depois de todas as tasks concluídas, despache uma revisão final de toda a
-branch (escopo mais amplo que a revisão por task, olhando o diff completo
-contra a base) usando o `jet-revisor` com o range completo, e então siga
-para a integração (merge/PR) conforme o fluxo do projeto.
+Depois de todas as tasks concluídas, siga para o fechamento abaixo.
+
+## Fechamento — abrir o PR
+
+Esta seção é sua. O sistema inteiro converge para "entrega via PR", e esse
+passo é seu, não uma expectativa sobre terceiros. Executar as tasks e parar
+com commits numa branch é entregar pela metade.
+
+1. **Revisão final de branch.** Despache o `jet-revisor` com o range
+   completo contra a base e **também com o caminho do ledger** — a lista de
+   achados Menores que você acumulou por task é o insumo de triagem dele.
+   Use o modelo mais capaz disponível: o escopo aqui é maior que o de
+   qualquer revisão por task.
+2. **Triagem dos Menores.** Cada achado vira *corrigir agora* ou *fica
+   registrado no corpo do PR*. Para os que forem corrigir, despache **um
+   único** subagente de correção com a lista inteira — um corretor por
+   achado reconstrói contexto e rerroda suíte a cada vez.
+3. **Verificação fresca.** Rode o comando de teste uma última vez e leia o
+   output. O corpo do PR vai afirmar que a suíte passa; essa afirmação
+   precisa de evidência desta mensagem, não de memória.
+4. **Push da branch.** `git push -u origin <branch>`. Nunca em `main` —
+   o gate de fronteiras nega, e está certo.
+5. **Montar o corpo do PR a partir do que já está em disco.** Nada é
+   inventado aqui; tudo já existe:
+   - caminho do spec e do plano;
+   - uma linha por task, do ledger: número, resumo e range de commits;
+   - os dois vereditos da revisão final;
+   - os Menores que ficaram sem correção, para quem revisar o PR triar;
+   - comando de teste e o resultado que você acabou de ver.
+6. **Confirmar com o humano — uma linha, não um interrogatório.** Mostre
+   título, base, head e o corpo, e pergunte se pode abrir. Isto não viola a
+   regra de execução contínua: aquela regra é sobre não parar *entre tasks*;
+   isto é o fim, e é o handoff.
+   **Se você estiver em contexto forkado** (foi despachado por
+   `/jet-executar`), a pergunta não chega ao humano de forma confiável:
+   **não pergunte.** Pare e devolva `Branch <x> pronta, revisão final limpa,
+   N Menores pendentes. Rode /jet-pr para abrir.`
+7. **Abrir:** `gh pr create --base <default> --head <branch> --title ...
+   --body-file <arquivo>`.
+8. **Última linha do ledger:** `PR aberto: <url>`.
+
+**Nunca `gh pr merge`.** Quem aprova e mergeia é o humano, no GitHub. O
+gate de fronteiras nega isso de propósito.
 
 ## Pré-voo: revisão do plano antes de começar
 
@@ -213,8 +252,8 @@ devolve na resposta — fica residente no seu contexto pelo resto da sessão
 e é relido a cada turno seguinte. Entregue artefatos como arquivos:
 
 - **Brief da task:** antes de despachar um implementador, extraia o texto
-  completo da task do plano para um arquivo com nome único (ex.:
-  `task-N-brief.md`) e componha o despacho para que o brief seja a fonte
+  completo da task do plano para um arquivo com nome único em
+  `.jet/sdd/tasks/task-N-brief.md` e componha o despacho para que o brief seja a fonte
   única dos requisitos. Seu despacho deve conter: (1) uma linha sobre onde
   essa task se encaixa no projeto; (2) o caminho do brief, apresentado como
   "leia isso primeiro — são os seus requisitos, com os valores exatos a
@@ -224,13 +263,16 @@ e é relido a cada turno seguinte. Entregue artefatos como arquivos:
   Valores exatos (números, strings mágicas, assinaturas, casos de teste)
   aparecem só no brief.
 - **Arquivo de relatório:** nomeie o relatório do implementador a partir do
-  brief (brief `task-N-brief.md` → relatório `task-N-report.md`) e informe
+  brief (brief `.jet/sdd/tasks/task-N-brief.md` → relatório
+  `.jet/sdd/tasks/task-N-report.md`) e informe
   o caminho no despacho. O implementador escreve o relatório completo lá e
   retorna na resposta só o status, os commits, um resumo de uma linha dos
   testes e as preocupações.
 - **Entradas do revisor:** o `jet-revisor` recebe três caminhos — o mesmo
   brief, o arquivo de relatório e o pacote de diff — mais as restrições
-  globais que vinculam a task.
+  globais que vinculam a task. Na **revisão final de branch**, acrescente o
+  caminho do ledger: é lá que os Menores acumulados estão, e sem ele a
+  lista vira descarte silencioso.
 - Despachos de correção anexam o relatório de correção (com resultados de
   teste) ao mesmo arquivo de relatório e retornam um resumo curto;
   re-revisões leem o arquivo atualizado.

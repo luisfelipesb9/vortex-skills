@@ -79,6 +79,19 @@ class TestLiberar(unittest.TestCase):
         ("rm -rf ./build", "limpeza de artefato"),
         ("gh pr create --fill", "abrir PR e o caminho desejado"),
         ("git commit -m 'feat: x'", "commit"),
+        # Adjacentes-negativos: a palavra protegida DENTRO do nome da branch.
+        # Esta classe de caso nao estava na matriz original e por isso um bug
+        # real passou: `\bmain\b` casa dentro de `feat/main-nav`. Push de
+        # branch e pre-requisito do PR, entao o falso positivo travava o fluxo
+        # inteiro no ultimo passo.
+        ("git push -u origin feat/main-nav", "branch com 'main' no nome"),
+        ("git push origin fix/master-detail", "branch com 'master' no nome"),
+        ("git push origin producao-fix", "branch com 'producao' no nome"),
+        ("git push origin feat/mainframe-sync", "'main' como prefixo de outra palavra"),
+        ("git push origin chore/prod-config", "'prod' no nome"),
+        ("gh pr create --fill --base main", "abrir PR contra main e o destino certo"),
+        ("gh pr view 42", "leitura de PR"),
+        ("git merge-base main HEAD", "merge-base e leitura, nao merge"),
     ]
 
     def test_casos_liberados(self):

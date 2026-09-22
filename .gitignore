@@ -7,3 +7,7 @@ __pycache__/
 # uma compactacao, e ele so serve se sobreviver a uma limpeza do repo.
 .jet/sdd/diffs/
 .jet/cache/
+
+# Artefatos transitorios do loop por task. Brief e relatorio sao insumo
+# de despacho, nao entrega — nao poluem o historico.
+.jet/sdd/tasks/
