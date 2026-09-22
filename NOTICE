@@ -1,0 +1,65 @@
+JET Skills — Atribuições
+=========================
+
+Este repositório reúne agentes e skills desenvolvidos pela JET Digital para uso
+com Claude Code. A maior parte do conteúdo é original da JET. Uma origem
+externa exige atribuição explícita; as seções abaixo também esclarecem o que é original da JET:
+
+1. Superpowers (obra/superpowers)
+----------------------------------
+
+As skills de processo abaixo são **adaptações** de skills equivalentes do
+toolkit **Superpowers**, de autoria de Jesse Vincent (GitHub: `obra`):
+
+- `skills/jet-brainstorm/`   — adaptado de `brainstorming`
+- `skills/jet-plano/`        — adaptado de `writing-plans`
+- `skills/jet-subagentes/`   — adaptado de `subagent-driven-development`
+- `skills/jet-tdd/`          — adaptado de `test-driven-development`
+- `skills/jet-verificacao/`  — adaptado de `verification-before-completion`
+
+Repositório de origem: https://github.com/obra/superpowers
+
+Licença de origem: MIT License, Copyright (c) 2025 Jesse Vincent.
+
+    MIT License
+
+    Copyright (c) 2025 Jesse Vincent
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.
+
+A MIT License exige que o aviso de copyright acima e este aviso de permissão
+sejam incluídos em cópias ou partes substanciais do software — é o que este
+NOTICE cumpre para as cinco skills adaptadas listadas acima.
+
+agent-architect — original da JET (esclarecimento)
+---------------------------------------------------
+
+`skills/agent-architect/` **não** deriva do Superpowers nem de nenhum outro
+toolkit externo. É conteúdo original da JET Digital, construído a partir do
+**Roteiro de IA Agêntica 2026** (as 9 camadas de arquitetura de agentes),
+metodologia própria da JET.
+
+Demais agentes
+---------------
+
+Os 15 agentes em `agents/` (jet-dev-backend, jet-dev-frontend, jet-dev-dados,
+jet-dev-devops, jet-implementador, jet-copywriter, jet-trafego, jet-seo,
+jet-designer, jet-analista-dados, jet-gestor-projetos, jet-maestro,
+jet-revisor, jet-pesquisador, jet-doc) são conteúdo original da JET Digital,
+desenhado para o método de trabalho interno da agência.
