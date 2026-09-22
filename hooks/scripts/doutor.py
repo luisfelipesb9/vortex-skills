@@ -202,6 +202,9 @@ def relatorio(raiz_plugin, raiz_projeto):
     else:
         linhas.append("Erros de hook: nenhum registrado")
 
+    linhas.append("")
+    linhas.append("Fluxo de operacao: /jet-fluxo")
+
     return "\n".join(linhas), len(erros)
 
 

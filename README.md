@@ -4,7 +4,7 @@
 
 A JET não escreve um prompt novo a cada tarefa. Construiu um **time fixo de agentes especializados** — cada um com escopo claro, ferramentas certas e guardrails de segurança — e um punhado de **skills de processo** que garantem que qualquer um deles trabalhe do mesmo jeito: explora antes de decidir, planeja antes de codar, testa antes de implementar, verifica antes de dizer "pronto".
 
-Este repositório publica esse sistema inteiro: 15 agentes e 6 skills, prontos para instalar no Claude Code.
+Este repositório publica esse sistema inteiro como um plugin do Claude Code: 15 agentes, 6 skills de processo, 10 slash commands e 3 gates que rodam como hooks.
 
 ---
 
@@ -57,6 +57,10 @@ Este repositório publica esse sistema inteiro: 15 agentes e 6 skills, prontos p
 | [`jet-tdd`](docs/skills/jet-tdd.md) | Impõe o ciclo RED → GREEN → REFACTOR → commit em qualquer mudança de código. |
 | [`jet-verificacao`](docs/skills/jet-verificacao.md) | Exige evidência de verificação fresca — comando rodado e output lido — antes de qualquer alegação de "pronto". |
 
+Fora dessa tabela existe a [`jet-fluxo`](docs/skills/jet-fluxo.md) — ela não participa do trabalho,
+ela explica o trabalho: responde "como eu uso isso", "por que esse gate bloqueou", "qual o próximo
+passo". É o runbook em forma de skill.
+
 ---
 
 ## Como o sistema se encaixa
@@ -106,6 +110,14 @@ Para conferir que ficou de pé:
 
 Cada agente e cada skill tem uma página em [`docs/`](docs/) com o que faz, quando usar e um
 exemplo.
+
+## Como operar
+
+O fluxo completo — setup, feature nova, bugfix, entrega de agência, retomada após compactação,
+quando **não** usar o pipeline, e troubleshooting — está em **[`docs/RUNBOOK.md`](docs/RUNBOOK.md)**.
+
+Dentro de uma sessão você não precisa procurar: pergunte ("como eu uso isso?", "por que esse gate
+bloqueou?") e a skill `jet-fluxo` responde. Ou rode `/jet-fluxo` direto.
 
 ---
 
