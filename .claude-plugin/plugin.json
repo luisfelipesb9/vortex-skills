@@ -1,0 +1,82 @@
+{
+  "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
+  "name": "jet-skills",
+  "displayName": "JET Skills",
+  "version": "1.0.0",
+  "description": "Time de agentes especializados e skills de processo para tocar projetos de dev e de agencia: explora antes de decidir, planeja antes de codar, testa antes de implementar, verifica antes de dizer pronto.",
+  "author": {
+    "name": "JET Digital",
+    "url": "https://wearejet.digital"
+  },
+  "license": "MIT",
+  "keywords": [
+    "agentes",
+    "tdd",
+    "code-review",
+    "spec-driven",
+    "orquestracao",
+    "pt-br"
+  ],
+  "userConfig": {
+    "JET_NIVEL_FRONTEIRAS": {
+      "type": "string",
+      "title": "Fronteiras de seguranca",
+      "description": "Merge, force-push, push em branch protegida, deploy de producao, secrets e DNS. off = desligado | warn = so avisa | block = nega o irreversivel e pergunta no resto.",
+      "default": "block",
+      "options": ["off", "warn", "block"],
+      "required": false
+    },
+    "JET_NIVEL_LEDGER": {
+      "type": "string",
+      "title": "Integridade do ledger",
+      "description": "Impede redespachar task ja concluida e implementadores em paralelo. off | warn | block.",
+      "default": "block",
+      "options": ["off", "warn", "block"],
+      "required": false
+    },
+    "JET_NIVEL_TDD": {
+      "type": "string",
+      "title": "Gate de TDD no commit (v2)",
+      "description": "Reservado para a v2. Exige suite verde fresca antes de commitar codigo de producao. off | warn | block.",
+      "default": "off",
+      "options": ["off", "warn", "block"],
+      "required": false
+    },
+    "JET_NIVEL_VERIFICACAO": {
+      "type": "string",
+      "title": "Gate de evidencia antes de concluir (v2)",
+      "description": "Reservado para a v2. Cobra output de verificacao antes de alegar que algo esta pronto. off | warn | block.",
+      "default": "off",
+      "options": ["off", "warn", "block"],
+      "required": false
+    },
+    "JET_LEDGER_PATH": {
+      "type": "string",
+      "title": "Caminho do ledger de progresso",
+      "description": "Onde o controlador registra o progresso task a task, relativo a raiz do projeto.",
+      "default": ".jet/sdd/progress.md",
+      "required": false
+    },
+    "JET_DOCS_PATH": {
+      "type": "string",
+      "title": "Pasta de specs e planos",
+      "description": "Onde jet-brainstorm salva specs e jet-plano salva planos de implementacao, relativo a raiz do projeto.",
+      "default": ".jet/sdd",
+      "required": false
+    },
+    "JET_TEST_COMMAND": {
+      "type": "string",
+      "title": "Comando de teste",
+      "description": "Deixe vazio para detectar automaticamente pelo manifesto do projeto (package.json, pyproject.toml, Cargo.toml, go.mod, etc).",
+      "default": "",
+      "required": false
+    },
+    "JET_RASTREADOR": {
+      "type": "string",
+      "title": "Rastreador de tarefas",
+      "description": "Onde o time registra tarefas e status. Use 'arquivo' para um .md versionado no proprio repo.",
+      "default": "arquivo",
+      "required": false
+    }
+  }
+}

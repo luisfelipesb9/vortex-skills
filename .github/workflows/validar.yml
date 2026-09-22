@@ -1,0 +1,45 @@
+name: validar
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  testes:
+    name: Testes dos scripts de hook
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Suite (stdlib, sem dependencia)
+        run: python3 -m unittest discover -s hooks/scripts/tests -v
+
+  frontmatter:
+    name: Frontmatter dos agentes
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      # Este job e o gate de verdade. `claude plugin validate` so confere a
+      # PRESENCA do bloco de frontmatter — verificado no 2.1.273, ele aceita
+      # effort invalido, maxTurns negativo, color inexistente e
+      # permissionMode: bypassPermissions sem reclamar.
+      - name: Validar valores de campo
+        run: python3 -S hooks/scripts/doutor.py --agentes
+
+  manifesto:
+    name: Manifesto do plugin
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Instalar Claude Code
+        run: curl -fsSL https://claude.ai/install.sh | bash
+      - name: plugin validate
+        run: |
+          export PATH="$HOME/.local/bin:$PATH"
+          claude plugin validate .
