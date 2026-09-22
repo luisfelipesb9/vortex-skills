@@ -1,4 +1,50 @@
 {
-  "description": "JET Skills — enforcement de fronteiras de seguranca e integridade do ledger. Os gates entram no Ciclo 2; por ora so a base esta registrada.",
-  "hooks": {}
+  "description": "JET Skills — reancoragem do ledger (SessionStart/PostCompact) e fronteiras de seguranca (PreToolUse em Bash). Os dois sao deterministicos e fail-open: excecao no script vira exit 0 silencioso, nunca bloqueio acidental.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3",
+            "args": ["-S", "${CLAUDE_PLUGIN_ROOT}/hooks/scripts/contexto.py"],
+            "timeout": 5,
+            "statusMessage": "JET: lendo ledger"
+          }
+        ]
+      }
+    ],
+    "PostCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3",
+            "args": ["-S", "${CLAUDE_PLUGIN_ROOT}/hooks/scripts/contexto.py"],
+            "timeout": 5,
+            "statusMessage": "JET: reancorando ledger"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3",
+            "args": [
+              "-S",
+              "${CLAUDE_PLUGIN_ROOT}/hooks/scripts/fronteiras.py",
+              "--nivel",
+              "${user_config.JET_NIVEL_FRONTEIRAS}"
+            ],
+            "timeout": 5,
+            "statusMessage": "JET: fronteiras"
+          }
+        ]
+      }
+    ]
+  }
 }
