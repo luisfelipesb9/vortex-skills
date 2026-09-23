@@ -37,7 +37,7 @@ def lista(bruto):
 
 def agentes():
     saida = []
-    for f in sorted((RAIZ / "agents").glob("*/*.md")):
+    for f in sorted((RAIZ / "agents").glob("*.md")):
         c = ler_frontmatter(f)
         if not c or "name" not in c:
             continue
@@ -92,6 +92,9 @@ def gates():
 
 
 if __name__ == "__main__":
-    json.dump({"agentes": agentes(), "skills": skills(),
+    _ag = agentes()
+    if not _ag:
+        sys.exit("gerar-mapa: zero agentes lidos — o glob nao bate com a estrutura de agents/")
+    json.dump({"agentes": _ag, "skills": skills(),
                "comandos": comandos(), "gates": gates()},
               sys.stdout, ensure_ascii=False, indent=2)
