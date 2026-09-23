@@ -99,7 +99,10 @@ de cada volta**. A `jet-verificacao` é transversal: ela se aplica em todo ponto
 dizer que algo está pronto. O `jet-maestro` conduz esse loop sozinho quando o trabalho é autônomo;
 sem ele, o time roda sob comando direto do humano, um agente por vez.
 
-O fluxo de operação completo está em **[`docs/RUNBOOK.md`](docs/RUNBOOK.md)**.
+O fluxo de operação completo está em **[`docs/RUNBOOK.md`](docs/RUNBOOK.md)**, e o mapa visual
+do sistema — os 15 agentes com suas fronteiras, os gates e os comandos — está
+[aqui](https://claude.ai/artifact/YbwyZm2pbrYjoNxztmryZY). Ele é gerado a partir dos
+frontmatters por `tools/gerar-mapa.py`, então não diverge do código.
 
 ## O que é garantido por máquina e o que é convenção
 
