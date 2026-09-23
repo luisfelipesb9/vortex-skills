@@ -2,6 +2,27 @@
 
 Formato: [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/). Versionamento semântico.
 
+## [1.0.2] — 2026-09-23
+
+### Corrigido
+
+- **O gate de fronteiras não rodava.** Os hooks passavam `--nivel
+  ${user_config.VORTEX_NIVEL_FRONTEIRAS}`, e o runtime trata interpolação irresolvível como erro
+  **fatal**: numa instalação sem configurar, o hook nem era lançado. O `default` do schema é
+  pré-preenchimento de diálogo, não valor materializado. A flag saiu; o nível agora é resolvido
+  pelo próprio script (`.vortex/config.json` > env > default), que é onde a defesa sempre esteve.
+- **Os testes gravavam no log de produção.** `CLAUDE_PLUGIN_DATA` não era isolado, então
+  `log_erro` escrevia em `~/.claude/vortex-skills/erros.jsonl` e o `/vortex-doutor` reportava
+  entradas de teste como erro real — o que produziu um diagnóstico errado. Isolado, com teste que
+  afirma que o caminho de produção não é tocado.
+
+### Adicionado
+
+- **`/vortex-doutor` agora prova que cada gate está vivo**, não só que está configurado. Ele invoca
+  cada hook com entrada sintética de resposta conhecida (`git merge main` tem que ser negado) e
+  reporta `ativo` ou `FALHOU — <motivo>`. Sem isso, gate morto e gate que liberou produzem o mesmo
+  silêncio — que foi exatamente como o de fronteiras passou uma instalação inteira sem rodar.
+
 ## [1.0.1] — 2026-09-23
 
 ### Corrigido

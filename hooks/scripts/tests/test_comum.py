@@ -13,6 +13,17 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import _comum  # noqa: E402
 
 
+def setUpModule():
+    """Isola o log de erros do diretorio de producao.
+
+    Sem isto, `log_erro` grava em ~/.claude/vortex-skills/erros.jsonl e os
+    testes poluem o diagnostico que o /vortex-doutor mostra ao humano. Ja
+    aconteceu: quatro entradas de teste apareceram como erro de hook real e
+    produziram um diagnostico errado.
+    """
+    os.environ["CLAUDE_PLUGIN_DATA"] = tempfile.mkdtemp(prefix="vortex-testes-")
+
+
 class TestDescobrirComandoTeste(unittest.TestCase):
     """O hook nunca pode hardcodar `npm test` — ele descobre pelo manifesto."""
 
@@ -134,6 +145,23 @@ class TestFailOpen(unittest.TestCase):
         with self.assertRaises(SystemExit) as ctx:
             _comum.executar(lambda e: None, entrada_bruta="isso nao e json")
         self.assertEqual(ctx.exception.code, 0)
+
+
+class TestIsolamentoDoLog(unittest.TestCase):
+    """O log de teste nunca pode encostar no diretorio de producao."""
+
+    def test_dir_dados_aponta_para_temporario(self):
+        self.assertNotIn(
+            "/.claude/vortex-skills",
+            _comum.dir_dados(),
+            "os testes estao gravando no log que o /vortex-doutor le")
+
+    def test_log_erro_nao_escreve_no_caminho_de_producao(self):
+        producao = Path.home() / ".claude" / "vortex-skills" / "erros.jsonl"
+        antes = producao.stat().st_size if producao.is_file() else -1
+        _comum.log_erro("teste_de_isolamento", "nao deve vazar")
+        depois = producao.stat().st_size if producao.is_file() else -1
+        self.assertEqual(antes, depois, "log de teste vazou para producao")
 
 
 if __name__ == "__main__":

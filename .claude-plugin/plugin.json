@@ -2,7 +2,7 @@
   "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
   "name": "vortex-skills",
   "displayName": "Vortex Skills",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Time de agentes especializados e skills de processo para tocar projetos de dev e de agencia: explora antes de decidir, planeja antes de codar, testa antes de implementar, verifica antes de dizer pronto.",
   "author": {
     "name": "Vortex",
@@ -21,7 +21,7 @@
     "VORTEX_NIVEL_FRONTEIRAS": {
       "type": "string",
       "title": "Fronteiras de seguranca",
-      "description": "Merge, force-push, push em branch protegida, deploy de producao, secrets e DNS. off = desligado | warn = so avisa | block = nega o irreversivel e pergunta no resto.",
+      "description": "Merge, force-push, push em branch protegida, deploy de producao, secrets e DNS. off = desligado | warn = so avisa | block = nega o irreversivel e pergunta no resto. Aplicado via .vortex/config.json (use /vortex-nivel) — o gate nao depende desta chave estar setada.",
       "default": "block",
       "options": [
         "off",
@@ -33,7 +33,7 @@
     "VORTEX_NIVEL_LEDGER": {
       "type": "string",
       "title": "Integridade do ledger",
-      "description": "Impede redespachar task que o ledger ja marca como concluida — o erro mais caro depois de uma compactacao. off | warn | block.",
+      "description": "Impede redespachar task que o ledger ja marca como concluida — o erro mais caro depois de uma compactacao. off | warn | block. Aplicado via .vortex/config.json (use /vortex-nivel) — o gate nao depende desta chave estar setada.",
       "default": "block",
       "options": [
         "off",
@@ -45,7 +45,7 @@
     "VORTEX_NIVEL_TDD": {
       "type": "string",
       "title": "Gate de TDD no commit (v2)",
-      "description": "Reservado para a v2. Exige suite verde fresca antes de commitar codigo de producao. off | warn | block.",
+      "description": "Reservado para a v2. Exige suite verde fresca antes de commitar codigo de producao. off | warn | block. Aplicado via .vortex/config.json (use /vortex-nivel) — o gate nao depende desta chave estar setada.",
       "default": "off",
       "options": [
         "off",
@@ -57,7 +57,7 @@
     "VORTEX_NIVEL_VERIFICACAO": {
       "type": "string",
       "title": "Gate de evidencia antes de concluir (v2)",
-      "description": "Reservado para a v2. Cobra output de verificacao antes de alegar que algo esta pronto. off | warn | block.",
+      "description": "Reservado para a v2. Cobra output de verificacao antes de alegar que algo esta pronto. off | warn | block. Aplicado via .vortex/config.json (use /vortex-nivel) — o gate nao depende desta chave estar setada.",
       "default": "off",
       "options": [
         "off",

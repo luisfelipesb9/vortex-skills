@@ -166,6 +166,76 @@ def linha_gate(nivel, arquivo, campo, mensagem):
     return f"{MARCA[nivel]} {arquivo:<26} {campo}: {mensagem}"
 
 
+
+# --------------------------------------------------------------------------
+# Prova de vida dos gates
+# --------------------------------------------------------------------------
+
+# Cada sonda e uma entrada sintetica cuja resposta CERTA e conhecida de
+# antemao. Sonda sem resposta esperada nao prova nada — so diz que o processo
+# terminou.
+SONDAS = [
+    {"gate": "fronteiras", "script": "fronteiras.py", "espera": "deny",
+     "entrada": {"tool_name": "Bash", "hook_event_name": "PreToolUse",
+                 "tool_input": {"command": "git merge main"}}},
+    {"gate": "ledger", "script": "gate_despacho.py", "espera": None,
+     "entrada": {"tool_name": "Agent", "hook_event_name": "PreToolUse",
+                 "tool_input": {"prompt": "sonda", "subagent_type": "vortex-implementador"}}},
+    {"gate": "contexto", "script": "contexto.py", "espera": None,
+     "entrada": {"hook_event_name": "SessionStart"}},
+]
+
+
+def verificar_gates(raiz_plugin):
+    """Invoca cada gate com entrada sintetica e diz se ele esta VIVO.
+
+    Existe porque um gate morto e um gate que liberou produzem exatamente o
+    mesmo silencio. Sem esta sonda, o relatorio imprime o nivel configurado e
+    da a entender que o gate esta funcionando — que foi como o gate de
+    fronteiras passou uma instalacao inteira sem rodar.
+    """
+    import subprocess
+
+    saida = []
+    for s in SONDAS:
+        script = Path(raiz_plugin) / "hooks" / "scripts" / s["script"]
+        r = {"gate": s["gate"], "ativo": False, "decisao": None, "motivo": ""}
+        if not script.is_file():
+            r["motivo"] = f"script ausente ({s['script']})"
+            saida.append(r)
+            continue
+        try:
+            proc = subprocess.run(
+                ["python3", "-S", str(script)],
+                input=json.dumps(s["entrada"]), capture_output=True, text=True, timeout=10)
+        except Exception as e:
+            r["motivo"] = f"nao executou: {e}"
+            saida.append(r)
+            continue
+
+        if proc.returncode != 0:
+            r["motivo"] = f"exit {proc.returncode}: {(proc.stderr or '').strip()[:120]}"
+            saida.append(r)
+            continue
+
+        if proc.stdout.strip():
+            try:
+                r["decisao"] = json.loads(proc.stdout)["hookSpecificOutput"].get("permissionDecision")
+            except Exception:
+                r["motivo"] = "saida nao e JSON de hook valido"
+                saida.append(r)
+                continue
+
+        if s["espera"] and r["decisao"] != s["espera"]:
+            r["motivo"] = f"sonda esperava {s['espera']}, recebeu {r['decisao'] or 'nada'}"
+            saida.append(r)
+            continue
+
+        r["ativo"] = True
+        saida.append(r)
+    return saida
+
+
 def relatorio(raiz_plugin, raiz_projeto):
     linhas = [cabecalho("doutor", "diagnostico do enforcement"), ""]
 
@@ -175,9 +245,21 @@ def relatorio(raiz_plugin, raiz_projeto):
     linhas.append(f"  comando teste   {cmd or 'nenhum detectado — gates de suite ficam inativos'}")
     linhas.append("")
 
-    linhas.append("Niveis efetivos")
+    linhas.append("Gates")
+    vivos = {g["gate"]: g for g in verificar_gates(raiz_plugin)}
     for gate in ("fronteiras", "ledger", "tdd", "verificacao"):
-        linhas.append(f"  {gate:<14}  {_comum.resolver_nivel(gate, None, raiz_projeto)}")
+        nivel = _comum.resolver_nivel(gate, None, raiz_projeto)
+        g = vivos.get(gate)
+        if g is None:
+            estado = "reservado para a v2" if nivel == "off" else "sem sonda"
+        elif g["ativo"]:
+            estado = "ativo"
+        else:
+            estado = "FALHOU — " + g["motivo"]
+        linhas.append(f"  {gate:<14}  {nivel:<7}  {estado}")
+    if "contexto" in vivos:
+        c = vivos["contexto"]
+        linhas.append(f"  {'contexto':<14}  {'—':<7}  {'ativo' if c['ativo'] else 'FALHOU — ' + c['motivo']}")
     linhas.append("")
 
     dir_agentes = Path(raiz_plugin) / "agents"

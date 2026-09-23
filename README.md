@@ -1,6 +1,6 @@
 # Vortex Skills
 
-[![versão](https://img.shields.io/badge/vers%C3%A3o-1.0.1-informational)](CHANGELOG.md)
+[![versão](https://img.shields.io/badge/vers%C3%A3o-1.0.2-informational)](CHANGELOG.md)
 [![licença](https://img.shields.io/badge/licen%C3%A7a-MIT-informational)](LICENSE)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-plugin-informational)](https://claude.com/claude-code)
 [![agentes](https://img.shields.io/badge/agentes-15-informational)](docs/agentes/)

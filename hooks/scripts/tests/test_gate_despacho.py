@@ -10,6 +10,7 @@ prosa. Um brief da Task 5 cujo texto menciona "consome o que a Task 3
 produziu" NAO pode ser bloqueado por causa da Task 3.
 """
 import json
+import os
 import sys
 import tempfile
 import unittest
@@ -17,6 +18,11 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import gate_despacho  # noqa: E402
+
+
+def setUpModule():
+    """Isola o log de erros do diretorio de producao (ver test_comum)."""
+    os.environ["CLAUDE_PLUGIN_DATA"] = tempfile.mkdtemp(prefix="vortex-testes-")
 
 LEDGER = """# Progresso
 

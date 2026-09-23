@@ -4,6 +4,7 @@
 aceita effort invalido, maxTurns negativo, color inexistente e
 permissionMode perigoso sem reclamar. Este modulo e quem cobra os valores.
 """
+import os
 import sys
 import tempfile
 import unittest
@@ -11,6 +12,11 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import doutor  # noqa: E402
+
+
+def setUpModule():
+    """Isola o log de erros do diretorio de producao (ver test_comum)."""
+    os.environ["CLAUDE_PLUGIN_DATA"] = tempfile.mkdtemp(prefix="vortex-testes-")
 
 
 def agente(**campos):
@@ -132,6 +138,42 @@ class TestContratoDeSaida(unittest.TestCase):
 
     def test_cabecalho_de_gate_identifica_quem_esta_falando(self):
         self.assertTrue(doutor.cabecalho("doutor", "3 achados").startswith("[VORTEX/doutor]"))
+
+
+class TestGatesVivos(unittest.TestCase):
+    """O diagnostico precisa provar que o gate RODA, nao so que esta configurado.
+
+    Gate morto e gate que liberou sao indistinguiveis para quem le o relatorio.
+    Foi exatamente assim que o gate de fronteiras ficou morto desde a instalacao
+    sem ninguem perceber: o /vortex-doutor imprimia `fronteiras block` enquanto
+    o hook nem era lancado.
+    """
+
+    def raiz(self):
+        return Path(__file__).resolve().parents[3]
+
+    def test_reporta_cada_gate_como_ativo(self):
+        r = {g["gate"]: g for g in doutor.verificar_gates(self.raiz())}
+        self.assertIn("fronteiras", r)
+        self.assertIn("ledger", r)
+        self.assertIn("contexto", r)
+        for nome, g in r.items():
+            self.assertTrue(g["ativo"], f"{nome} deveria estar ativo: {g.get('motivo')}")
+
+    def test_fronteiras_e_sondado_com_um_comando_que_tem_que_ser_negado(self):
+        """A sonda so prova algo se a resposta certa for conhecida de antemao."""
+        g = [x for x in doutor.verificar_gates(self.raiz()) if x["gate"] == "fronteiras"][0]
+        self.assertEqual(g["decisao"], "deny")
+
+    def test_gate_que_nao_existe_e_reportado_como_falho_nao_some(self):
+        r = doutor.verificar_gates(Path(tempfile.mkdtemp()))
+        self.assertTrue(r, "gates ausentes precisam aparecer como falha, nao sumir")
+        self.assertTrue(all(not g["ativo"] for g in r))
+        self.assertTrue(all(g["motivo"] for g in r))
+
+    def test_relatorio_mostra_o_estado_de_execucao_junto_do_nivel(self):
+        texto, _ = doutor.relatorio(self.raiz(), self.raiz())
+        self.assertIn("ativo", texto)
 
 
 if __name__ == "__main__":

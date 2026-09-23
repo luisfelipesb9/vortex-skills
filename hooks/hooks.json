@@ -1,5 +1,5 @@
 {
-  "description": "Vortex Skills — reancoragem do ledger (SessionStart/PostCompact), fronteiras de seguranca (PreToolUse/Bash) e integridade do ledger (PreToolUse/Agent). Todos deterministicos e fail-open: excecao no script vira exit 0 silencioso, nunca bloqueio acidental.",
+  "description": "Vortex Skills — reancoragem do ledger (SessionStart/PostCompact), fronteiras de seguranca (PreToolUse/Bash) e integridade do ledger (PreToolUse/Agent). Nivel resolvido pelo proprio script (.vortex/config.json > env > default), nunca por interpolacao de argumento. Todos deterministicos e fail-open: excecao no script vira exit 0 silencioso, nunca bloqueio acidental.",
   "hooks": {
     "SessionStart": [
       {
@@ -42,9 +42,7 @@
             "command": "python3",
             "args": [
               "-S",
-              "${CLAUDE_PLUGIN_ROOT}/hooks/scripts/fronteiras.py",
-              "--nivel",
-              "${user_config.VORTEX_NIVEL_FRONTEIRAS}"
+              "${CLAUDE_PLUGIN_ROOT}/hooks/scripts/fronteiras.py"
             ],
             "timeout": 5,
             "statusMessage": "Vortex: fronteiras"
@@ -59,9 +57,7 @@
             "command": "python3",
             "args": [
               "-S",
-              "${CLAUDE_PLUGIN_ROOT}/hooks/scripts/gate_despacho.py",
-              "--nivel",
-              "${user_config.VORTEX_NIVEL_LEDGER}"
+              "${CLAUDE_PLUGIN_ROOT}/hooks/scripts/gate_despacho.py"
             ],
             "timeout": 5,
             "statusMessage": "Vortex: ledger"

@@ -5,12 +5,19 @@ falso negativo deixa passar acao irreversivel. Os dois custam, e por isso
 cada caso esta escrito explicitamente em vez de coberto por regra geral.
 """
 import json
+import os
+import tempfile
 import sys
 import unittest
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import fronteiras  # noqa: E402
+
+
+def setUpModule():
+    """Isola o log de erros do diretorio de producao (ver test_comum)."""
+    os.environ["CLAUDE_PLUGIN_DATA"] = tempfile.mkdtemp(prefix="vortex-testes-")
 
 
 def decidir(comando, nivel="block"):
