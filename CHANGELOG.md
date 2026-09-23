@@ -2,6 +2,24 @@
 
 Formato: [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/). Versionamento semântico.
 
+## [1.0.1] — 2026-09-23
+
+### Corrigido
+
+- **Nenhum dos 15 agentes carregava.** A estrutura `agents/<nome>/<nome>.md`, herdada do
+  repositório original, não é lida por um plugin: agente de plugin carrega só de `agents/*.md` no
+  nível raiz. `claude plugin details` reportava `Agents (0)`. Só a instalação real revelou isso —
+  sete ciclos de leitura estática não revelaram.
+- `commands/vortex-fluxo.md` e `commands/vortex-plano.md` colidiam com as skills de mesmo nome.
+  Skill e command dividem namespace; uma skill já é invocável como `/nome`. Os dois commands foram
+  removidos e as skills passaram a aceitar argumento.
+
+### Alterado
+
+- Renomeado de `jet-skills` para `vortex-skills` em todo o sistema: caminhos, nome do plugin, chaves
+  de configuração (`VORTEX_NIVEL_*`), diretório de artefatos (`.vortex/sdd/`) e o prefixo das
+  mensagens de gate (`[VORTEX/<gate>]`). A atribuição MIT a Jesse Vincent no NOTICE não mudou.
+
 ## [1.0.0] — 2026-09-22
 
 Primeira versão como plugin do Claude Code. Antes disso a distribuição era `cp -r` de pastas soltas.

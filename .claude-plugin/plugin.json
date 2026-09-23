@@ -2,7 +2,7 @@
   "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
   "name": "vortex-skills",
   "displayName": "Vortex Skills",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Time de agentes especializados e skills de processo para tocar projetos de dev e de agencia: explora antes de decidir, planeja antes de codar, testa antes de implementar, verifica antes de dizer pronto.",
   "author": {
     "name": "Vortex",
