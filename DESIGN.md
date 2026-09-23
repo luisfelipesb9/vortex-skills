@@ -28,7 +28,7 @@ catorze. Ela responde *quando eu chamo este agente* e *o que o distingue do vizi
 "como ele trabalha" pertence ao corpo do agente, que só carrega depois que ele é escolhido.
 O validador (`doutor.py`) reprova acima de 25.
 
-**`displayName`** — o nome curto, sem prefixo `jet-`. "Revisor", não "jet-revisor".
+**`displayName`** — o nome curto, sem prefixo `vortex-`. "Revisor", não "vortex-revisor".
 
 ---
 
@@ -40,7 +40,7 @@ aprende onde olhar e para de ler a linha inteira.
 ### Toda mensagem de gate
 
 ```
-[JET/<gate>] <veredito em uma linha>
+[VORTEX/<gate>] <veredito em uma linha>
 <contexto factual, uma informação por linha, alinhado>
 <o que fazer agora — imperativo, concreto>
 <como desligar, quando aplicável>
@@ -52,10 +52,10 @@ saber, antes de ler o resto, **quem** está falando e se aquilo é do plugin ou 
 Exemplo real, do gate de fronteiras:
 
 ```
-[JET/fronteiras] Bloqueado: merge.
+[VORTEX/fronteiras] Bloqueado: merge.
 O time entrega via PR; merge é gate humano.
 Abra o PR (`gh pr create`) e pare.
-Desativar neste projeto: .jet/config.json → {"niveis":{"fronteiras":"warn"}}
+Desativar neste projeto: .vortex/config.json → {"niveis":{"fronteiras":"warn"}}
 ```
 
 ### Severidade — três níveis, um marcador cada
@@ -70,7 +70,7 @@ Alinhados em coluna, largura fixa, minúsculas exceto `ERRO`. **Sem emoji, sem c
 caixa desenhada.** O terminal do leitor já tem tema; competir com ele é ruído. A exceção é o
 `✓`/`✘` de um resultado binário e único, nunca em lista.
 
-### Veredito do `jet-revisor` — dois eixos, nunca fundidos
+### Veredito do `vortex-revisor` — dois eixos, nunca fundidos
 
 Código pode passar num eixo e falhar no outro; fundir os dois esconde exatamente a informação que
 importa. Os dois aparecem sempre, mesmo quando ambos passam.
@@ -88,7 +88,7 @@ Qualidade   ✘ 1 importante, 2 menores
 ### `statusMessage` de hook
 
 Minúsculas, sem ponto final, no máximo 4 palavras, verbo no gerúndio ou substantivo:
-`JET: fronteiras`, `JET: lendo ledger`. Isso pisca por milissegundos; frase completa ali é ruído.
+`Vortex: fronteiras`, `Vortex: lendo ledger`. Isso pisca por milissegundos; frase completa ali é ruído.
 
 ### Relatório de agente
 

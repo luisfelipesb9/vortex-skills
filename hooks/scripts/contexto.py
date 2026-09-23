@@ -1,6 +1,6 @@
 """Reancoragem do ledger — SessionStart e PostCompact.
 
-A skill `jet-subagentes` diz, com todas as letras, que o erro mais caro ja
+A skill `vortex-subagentes` diz, com todas as letras, que o erro mais caro ja
 observado foi um controlador redespachando tasks ja concluidas depois de uma
 compactacao. A causa e simples: memoria de conversa nao sobrevive a
 compactacao. Disco sobrevive.
@@ -28,7 +28,7 @@ def tasks_concluidas(ledger):
 
 def _caminho_ledger(raiz):
     import os
-    rel = os.environ.get("JET_LEDGER_PATH") or ".jet/sdd/progress.md"
+    rel = os.environ.get("VORTEX_LEDGER_PATH") or ".vortex/sdd/progress.md"
     return Path(raiz) / rel
 
 
@@ -55,7 +55,7 @@ def montar(raiz, evento):
     feitas = tasks_concluidas(ledger)
     momento = "Sessao iniciada" if evento == "SessionStart" else "Contexto compactado"
 
-    linhas = [f"[JET/ledger] {momento}. Estado real do trabalho, lido do disco:", ""]
+    linhas = [f"[VORTEX/ledger] {momento}. Estado real do trabalho, lido do disco:", ""]
     if feitas:
         linhas.append(f"Tasks ja CONCLUIDAS: {', '.join(feitas)}.")
         linhas.append(
@@ -76,7 +76,7 @@ def responder(entrada):
     entrada = entrada or {}
     # O ledger e contexto do controlador. Um subagente recebe o brief da task
     # dele e nada mais — reancorar ali so poluiria o contexto isolado que a
-    # jet-subagentes cuida de montar.
+    # vortex-subagentes cuida de montar.
     if entrada.get("agent_id"):
         return None
     evento = entrada.get("hook_event_name") or "SessionStart"

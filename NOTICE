@@ -1,9 +1,9 @@
-JET Skills — Atribuições
+Vortex Skills — Atribuições
 =========================
 
-Este repositório reúne agentes e skills desenvolvidos pela JET Digital para uso
-com Claude Code. A maior parte do conteúdo é original da JET. Uma origem
-externa exige atribuição explícita; as seções abaixo também esclarecem o que é original da JET:
+Este repositório reúne agentes e skills desenvolvidos pela Vortex para uso
+com Claude Code. A maior parte do conteúdo é original da Vortex. Uma origem
+externa exige atribuição explícita; as seções abaixo também esclarecem o que é original da Vortex:
 
 1. Superpowers (obra/superpowers)
 ----------------------------------
@@ -11,11 +11,11 @@ externa exige atribuição explícita; as seções abaixo também esclarecem o q
 As skills de processo abaixo são **adaptações** de skills equivalentes do
 toolkit **Superpowers**, de autoria de Jesse Vincent (GitHub: `obra`):
 
-- `skills/jet-brainstorm/`   — adaptado de `brainstorming`
-- `skills/jet-plano/`        — adaptado de `writing-plans`
-- `skills/jet-subagentes/`   — adaptado de `subagent-driven-development`
-- `skills/jet-tdd/`          — adaptado de `test-driven-development`
-- `skills/jet-verificacao/`  — adaptado de `verification-before-completion`
+- `skills/vortex-brainstorm/`   — adaptado de `brainstorming`
+- `skills/vortex-plano/`        — adaptado de `writing-plans`
+- `skills/vortex-subagentes/`   — adaptado de `subagent-driven-development`
+- `skills/vortex-tdd/`          — adaptado de `test-driven-development`
+- `skills/vortex-verificacao/`  — adaptado de `verification-before-completion`
 
 Repositório de origem: https://github.com/obra/superpowers
 
@@ -50,7 +50,7 @@ NOTICE cumpre para as cinco skills adaptadas listadas acima.
 agent-architect — removida desta distribuição
 ---------------------------------------------
 
-A skill `agent-architect` (original da JET Digital, construída a partir do
+A skill `agent-architect` (original da Vortex, construída a partir do
 Roteiro de IA Agêntica 2026 — as 9 camadas de arquitetura de agentes) fazia
 parte deste repositório até a versão 1.0.0 e foi removida: ela não participava
 do funil spec → plano → execução, seu público é outro (proposta comercial), e
@@ -64,8 +64,8 @@ recuperado a qualquer momento:
 Demais agentes
 ---------------
 
-Os 15 agentes em `agents/` (jet-dev-backend, jet-dev-frontend, jet-dev-dados,
-jet-dev-devops, jet-implementador, jet-copywriter, jet-trafego, jet-seo,
-jet-designer, jet-analista-dados, jet-gestor-projetos, jet-maestro,
-jet-revisor, jet-pesquisador, jet-doc) são conteúdo original da JET Digital,
+Os 15 agentes em `agents/` (vortex-dev-backend, vortex-dev-frontend, vortex-dev-dados,
+vortex-dev-devops, vortex-implementador, vortex-copywriter, vortex-trafego, vortex-seo,
+vortex-designer, vortex-analista-dados, vortex-gestor-projetos, vortex-maestro,
+vortex-revisor, vortex-pesquisador, vortex-doc) são conteúdo original da Vortex,
 desenhado para o método de trabalho interno da agência.

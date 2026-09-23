@@ -1,7 +1,7 @@
 """Gate de integridade do ledger — PreToolUse em Agent.
 
 Impede redespachar uma task que o ledger ja marca como concluida. A
-`jet-subagentes` chama isso de "o erro mais caro observado": um controlador
+`vortex-subagentes` chama isso de "o erro mais caro observado": um controlador
 que, depois de uma compactacao, rechama sequencias inteiras de tasks ja
 feitas.
 
@@ -33,11 +33,11 @@ import contexto  # reusa tasks_concluidas(): uma fonte de verdade so
 # Quem implementa. O revisor fica de fora de proposito: re-revisar uma task
 # concluida e legitimo e acontece no fluxo normal.
 IMPLEMENTADORES = {
-    "jet-implementador",
-    "jet-dev-backend",
-    "jet-dev-frontend",
-    "jet-dev-dados",
-    "jet-dev-devops",
+    "vortex-implementador",
+    "vortex-dev-backend",
+    "vortex-dev-frontend",
+    "vortex-dev-dados",
+    "vortex-dev-devops",
 }
 
 # `task-3-brief.md`, `task_3_brief`, `task 3 brief`. O brief e nomeado pelo
@@ -90,10 +90,10 @@ def responder(entrada, nivel):
     decisao = "deny" if nivel == "block" else "ask"
     verbo = "Bloqueado" if decisao == "deny" else "Confirmar"
     return _comum.saida_pretooluse(decisao, (
-        f"[JET/ledger] {verbo}: redespacho da Task {numero}. "
+        f"[VORTEX/ledger] {verbo}: redespacho da Task {numero}. "
         f"O ledger marca a Task {numero} como concluida ({ledger_p}). "
         "Retome na primeira task nao marcada, ou reabra a task editando o ledger antes. "
-        'Reduzir a aviso neste projeto: .jet/config.json -> {"niveis":{"ledger":"warn"}}'
+        'Reduzir a aviso neste projeto: .vortex/config.json -> {"niveis":{"ledger":"warn"}}'
     ))
 
 

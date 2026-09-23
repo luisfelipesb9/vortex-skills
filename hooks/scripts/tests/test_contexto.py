@@ -1,6 +1,6 @@
 """Testes de contexto.py — reancoragem do ledger em SessionStart e PostCompact.
 
-A jet-subagentes diz que o erro mais caro observado foi controlador
+A vortex-subagentes diz que o erro mais caro observado foi controlador
 redespachando tasks ja concluidas depois de uma compactacao. Memoria de
 conversa nao sobrevive a compactacao; disco sobrevive. Este hook reancora.
 """
@@ -23,7 +23,7 @@ Task 4: não iniciada
 
 
 class TestLerLedger(unittest.TestCase):
-    def projeto(self, ledger=LEDGER, caminho=".jet/sdd/progress.md"):
+    def projeto(self, ledger=LEDGER, caminho=".vortex/sdd/progress.md"):
         d = Path(tempfile.mkdtemp())
         if ledger is not None:
             p = d / caminho
@@ -49,7 +49,7 @@ class TestLerLedger(unittest.TestCase):
 class TestMontarContexto(unittest.TestCase):
     def projeto(self):
         d = Path(tempfile.mkdtemp())
-        p = d / ".jet/sdd/progress.md"
+        p = d / ".vortex/sdd/progress.md"
         p.parent.mkdir(parents=True, exist_ok=True)
         p.write_text(LEDGER, encoding="utf-8")
         return d
@@ -61,7 +61,7 @@ class TestMontarContexto(unittest.TestCase):
         self.assertIn("nao redespache", texto.lower().replace("ã", "a").replace("ç", "c"))
 
     def test_segue_o_contrato_de_saida(self):
-        self.assertTrue(contexto.montar(self.projeto(), "SessionStart").startswith("[JET/ledger]"))
+        self.assertTrue(contexto.montar(self.projeto(), "SessionStart").startswith("[VORTEX/ledger]"))
 
     def test_saida_json_e_do_evento_certo(self):
         for evento in ("SessionStart", "PostCompact"):

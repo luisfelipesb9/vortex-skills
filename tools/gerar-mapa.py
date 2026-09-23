@@ -15,12 +15,12 @@ sys.path.insert(0, str(RAIZ / "hooks/scripts"))
 from doutor import ler_frontmatter  # noqa: E402
 
 TIMES = {
-    "jet-implementador": "dev", "jet-dev-backend": "dev", "jet-dev-frontend": "dev",
-    "jet-dev-dados": "dev", "jet-dev-devops": "dev",
-    "jet-maestro": "processo", "jet-revisor": "processo",
-    "jet-pesquisador": "processo", "jet-doc": "processo",
-    "jet-copywriter": "agencia", "jet-trafego": "agencia", "jet-seo": "agencia",
-    "jet-analista-dados": "agencia", "jet-gestor-projetos": "agencia", "jet-designer": "agencia",
+    "vortex-implementador": "dev", "vortex-dev-backend": "dev", "vortex-dev-frontend": "dev",
+    "vortex-dev-dados": "dev", "vortex-dev-devops": "dev",
+    "vortex-maestro": "processo", "vortex-revisor": "processo",
+    "vortex-pesquisador": "processo", "vortex-doc": "processo",
+    "vortex-copywriter": "agencia", "vortex-trafego": "agencia", "vortex-seo": "agencia",
+    "vortex-analista-dados": "agencia", "vortex-gestor-projetos": "agencia", "vortex-designer": "agencia",
 }
 
 

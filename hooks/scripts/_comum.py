@@ -1,4 +1,4 @@
-"""Base comum dos hooks do JET Skills.
+"""Base comum dos hooks do Vortex Skills.
 
 Tres responsabilidades, nesta ordem de importancia:
 
@@ -6,7 +6,7 @@ Tres responsabilidades, nesta ordem de importancia:
    hook. Toda excecao vira exit 0 silencioso + uma linha em erros.jsonl.
 2. **Descoberta de projeto.** O comando de teste nunca e hardcodado; sai do
    manifesto do projeto. Projeto sem suite desliga os gates que dependem dela.
-3. **Niveis.** Precedencia .jet/config.json > env > userConfig > default, com a
+3. **Niveis.** Precedencia .vortex/config.json > env > userConfig > default, com a
    regra dura de que valor invalido NUNCA escala severidade.
 
 Sem dependencia externa: roda com `python3 -S`, so stdlib.
@@ -38,7 +38,7 @@ NIVEIS_PADRAO = {
 def dir_dados():
     """Diretorio de estado do plugin. Cai no temp se o runtime nao exportar."""
     base = os.environ.get("CLAUDE_PLUGIN_DATA") or os.path.join(
-        os.path.expanduser("~"), ".claude", "jet-skills"
+        os.path.expanduser("~"), ".claude", "vortex-skills"
     )
     try:
         os.makedirs(base, exist_ok=True)
@@ -77,7 +77,7 @@ def raiz_projeto(entrada=None):
 
 def _config_projeto(raiz):
     try:
-        p = Path(raiz) / ".jet" / "config.json"
+        p = Path(raiz) / ".vortex" / "config.json"
         if p.is_file():
             return json.loads(p.read_text(encoding="utf-8"))
     except Exception as e:
@@ -166,14 +166,14 @@ def _valido(v):
 def resolver_nivel(gate, do_user_config, raiz):
     """Nivel efetivo de um gate.
 
-    Precedencia: .jet/config.json > env > userConfig > default.
+    Precedencia: .vortex/config.json > env > userConfig > default.
     Valor invalido em qualquer camada e descartado e logado — nunca escala
     severidade, nunca vira block por acidente. Isso cobre tambem o caso em que
     o runtime nao expande ${user_config.X} e o literal chega ate aqui.
     """
     candidatos = (
         ((_config_projeto(raiz).get("niveis") or {}).get(gate), "config_projeto"),
-        (os.environ.get(f"JET_NIVEL_{gate.upper()}"), "env"),
+        (os.environ.get(f"VORTEX_NIVEL_{gate.upper()}"), "env"),
         (do_user_config, "user_config"),
     )
     for valor, camada in candidatos:

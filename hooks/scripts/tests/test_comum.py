@@ -54,7 +54,7 @@ class TestDescobrirComandoTeste(unittest.TestCase):
     def test_config_do_projeto_sempre_vence_o_sniff(self):
         d = self.projeto({
             "package.json": json.dumps({"scripts": {"test": "jest"}}),
-            ".jet/config.json": json.dumps({"test_command": "make prova"}),
+            ".vortex/config.json": json.dumps({"test_command": "make prova"}),
         })
         self.assertEqual(_comum.descobrir_comando_teste(d), "make prova")
 
@@ -65,12 +65,12 @@ class TestDescobrirComandoTeste(unittest.TestCase):
 
 
 class TestNivel(unittest.TestCase):
-    """Precedencia: .jet/config.json > env > argumento (userConfig) > default."""
+    """Precedencia: .vortex/config.json > env > argumento (userConfig) > default."""
 
     def setUp(self):
         self.d = Path(tempfile.mkdtemp())
         for k in list(os.environ):
-            if k.startswith("JET_NIVEL_"):
+            if k.startswith("VORTEX_NIVEL_"):
                 del os.environ[k]
 
     def test_default_quando_nada_definido(self):
@@ -81,13 +81,13 @@ class TestNivel(unittest.TestCase):
         self.assertEqual(_comum.resolver_nivel("fronteiras", "warn", self.d), "warn")
 
     def test_env_vence_o_argumento(self):
-        os.environ["JET_NIVEL_FRONTEIRAS"] = "off"
+        os.environ["VORTEX_NIVEL_FRONTEIRAS"] = "off"
         self.assertEqual(_comum.resolver_nivel("fronteiras", "block", self.d), "off")
 
     def test_config_do_projeto_vence_tudo(self):
-        os.environ["JET_NIVEL_FRONTEIRAS"] = "off"
-        (self.d / ".jet").mkdir(parents=True, exist_ok=True)
-        (self.d / ".jet/config.json").write_text(json.dumps({"niveis": {"fronteiras": "warn"}}))
+        os.environ["VORTEX_NIVEL_FRONTEIRAS"] = "off"
+        (self.d / ".vortex").mkdir(parents=True, exist_ok=True)
+        (self.d / ".vortex/config.json").write_text(json.dumps({"niveis": {"fronteiras": "warn"}}))
         self.assertEqual(_comum.resolver_nivel("fronteiras", "block", self.d), "warn")
 
     def test_valor_invalido_nunca_escala_severidade(self):
@@ -96,7 +96,7 @@ class TestNivel(unittest.TestCase):
 
     def test_placeholder_nao_substituido_cai_no_default(self):
         """Se o runtime nao expandir ${user_config.X}, o literal chega no script."""
-        self.assertEqual(_comum.resolver_nivel("fronteiras", "${user_config.JET_NIVEL_FRONTEIRAS}", self.d), "block")
+        self.assertEqual(_comum.resolver_nivel("fronteiras", "${user_config.VORTEX_NIVEL_FRONTEIRAS}", self.d), "block")
 
 
 class TestSaidaDeHook(unittest.TestCase):

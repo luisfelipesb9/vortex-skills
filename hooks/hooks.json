@@ -1,5 +1,5 @@
 {
-  "description": "JET Skills — reancoragem do ledger (SessionStart/PostCompact), fronteiras de seguranca (PreToolUse/Bash) e integridade do ledger (PreToolUse/Agent). Todos deterministicos e fail-open: excecao no script vira exit 0 silencioso, nunca bloqueio acidental.",
+  "description": "Vortex Skills — reancoragem do ledger (SessionStart/PostCompact), fronteiras de seguranca (PreToolUse/Bash) e integridade do ledger (PreToolUse/Agent). Todos deterministicos e fail-open: excecao no script vira exit 0 silencioso, nunca bloqueio acidental.",
   "hooks": {
     "SessionStart": [
       {
@@ -12,7 +12,7 @@
               "${CLAUDE_PLUGIN_ROOT}/hooks/scripts/contexto.py"
             ],
             "timeout": 5,
-            "statusMessage": "JET: lendo ledger"
+            "statusMessage": "Vortex: lendo ledger"
           }
         ]
       }
@@ -28,7 +28,7 @@
               "${CLAUDE_PLUGIN_ROOT}/hooks/scripts/contexto.py"
             ],
             "timeout": 5,
-            "statusMessage": "JET: reancorando ledger"
+            "statusMessage": "Vortex: reancorando ledger"
           }
         ]
       }
@@ -44,10 +44,10 @@
               "-S",
               "${CLAUDE_PLUGIN_ROOT}/hooks/scripts/fronteiras.py",
               "--nivel",
-              "${user_config.JET_NIVEL_FRONTEIRAS}"
+              "${user_config.VORTEX_NIVEL_FRONTEIRAS}"
             ],
             "timeout": 5,
-            "statusMessage": "JET: fronteiras"
+            "statusMessage": "Vortex: fronteiras"
           }
         ]
       },
@@ -61,10 +61,10 @@
               "-S",
               "${CLAUDE_PLUGIN_ROOT}/hooks/scripts/gate_despacho.py",
               "--nivel",
-              "${user_config.JET_NIVEL_LEDGER}"
+              "${user_config.VORTEX_NIVEL_LEDGER}"
             ],
             "timeout": 5,
-            "statusMessage": "JET: ledger"
+            "statusMessage": "Vortex: ledger"
           }
         ]
       }

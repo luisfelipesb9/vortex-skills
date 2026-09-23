@@ -57,7 +57,7 @@ PERGUNTAR = [
     (re.compile(r"\bdocker\s+system\s+prune\b"), "prune destrutivo"),
 ]
 
-COMO_DESLIGAR = 'Reduzir a aviso neste projeto: .jet/config.json -> {"niveis":{"fronteiras":"warn"}}'
+COMO_DESLIGAR = 'Reduzir a aviso neste projeto: .vortex/config.json -> {"niveis":{"fronteiras":"warn"}}'
 
 
 def avaliar(comando, nivel):
@@ -74,14 +74,14 @@ def avaliar(comando, nivel):
             # ser impedido. Nunca vira allow silencioso.
             decisao = "deny" if nivel == "block" else "ask"
             verbo = "Bloqueado" if decisao == "deny" else "Confirmar"
-            return decisao, f"[JET/fronteiras] {verbo}: {rotulo}. {remediacao} {COMO_DESLIGAR}"
+            return decisao, f"[VORTEX/fronteiras] {verbo}: {rotulo}. {remediacao} {COMO_DESLIGAR}"
 
     for rx, rotulo in PERGUNTAR:
         if rx.search(comando):
             if nivel == "warn":
                 return "allow", ""
             return "ask", (
-                f"[JET/fronteiras] Acao irreversivel ou externa: {rotulo}. "
+                f"[VORTEX/fronteiras] Acao irreversivel ou externa: {rotulo}. "
                 f"Confirme se e isso mesmo antes de seguir. {COMO_DESLIGAR}")
 
     return "allow", ""

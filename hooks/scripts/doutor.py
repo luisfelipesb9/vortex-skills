@@ -1,4 +1,4 @@
-"""Validador de frontmatter dos agentes JET + diagnostico do enforcement.
+"""Validador de frontmatter dos agentes Vortex + diagnostico do enforcement.
 
 Existe porque `claude plugin validate` so confere a PRESENCA do bloco de
 frontmatter. Verificado empiricamente no Claude Code 2.1.273: ele aceita sem
@@ -158,7 +158,7 @@ MARCA = {"erro": "ERRO ", "aviso": "aviso"}
 
 def cabecalho(gate, resumo):
     """Abertura de toda mensagem de gate: quem esta falando, e o veredito."""
-    return f"[JET/{gate}] {resumo}"
+    return f"[VORTEX/{gate}] {resumo}"
 
 
 def linha_gate(nivel, arquivo, campo, mensagem):
@@ -203,7 +203,7 @@ def relatorio(raiz_plugin, raiz_projeto):
         linhas.append("Erros de hook: nenhum registrado")
 
     linhas.append("")
-    linhas.append("Fluxo de operacao: /jet-fluxo")
+    linhas.append("Fluxo de operacao: /vortex-fluxo")
 
     return "\n".join(linhas), len(erros)
 

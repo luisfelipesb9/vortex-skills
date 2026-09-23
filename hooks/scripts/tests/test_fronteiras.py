@@ -112,12 +112,12 @@ class TestNiveis(unittest.TestCase):
 class TestMensagem(unittest.TestCase):
     def test_segue_o_contrato_de_saida_do_design(self):
         _, motivo = decidir("git merge main")
-        self.assertTrue(motivo.startswith("[JET/fronteiras]"), motivo)
+        self.assertTrue(motivo.startswith("[VORTEX/fronteiras]"), motivo)
 
     def test_diz_o_que_fazer_e_como_desligar(self):
         _, motivo = decidir("git merge main")
         self.assertIn("gh pr create", motivo)
-        self.assertIn(".jet/config.json", motivo)
+        self.assertIn(".vortex/config.json", motivo)
 
     def test_saida_json_e_um_unico_documento_de_uma_linha(self):
         bruto = fronteiras.responder({"tool_name": "Bash", "tool_input": {"command": "git merge main"}}, "block")
