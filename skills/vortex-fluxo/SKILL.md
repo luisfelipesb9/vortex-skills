@@ -1,11 +1,13 @@
 ---
 name: vortex-fluxo
 description: "Use quando a pergunta for sobre COMO OPERAR o plugin vortex-skills: qual comando rodar, em que ordem, por que um gate bloqueou, como retomar depois de uma compactação, qual agente chamar para quê, o que é garantido por máquina e o que é convenção. Gatilhos: 'como uso isso', 'qual o próximo passo', 'travou o gate', 'o que faço agora', 'qual agente chamo'. NUNCA use para executar trabalho de produto — para criar, mudar ou corrigir software a skill é vortex-brainstorm, e para operar uma entrega de agência o ponto de entrada é o vortex-gestor-projetos."
+argument-hint: "[setup|feature|bugfix|agencia|retomada|troubleshooting]"
 ---
 
 # vortex-fluxo — como operar o time
 
-Responda pela tabela que couber. Detalhe completo, com os fluxos narrados passo a passo:
+Se veio um argumento (`$ARGUMENTS`), apresente essa seção do RUNBOOK. Sem argumento, responda
+pela tabela que couber. Detalhe completo, com os fluxos narrados passo a passo:
 `${CLAUDE_PLUGIN_ROOT}/docs/RUNBOOK.md` — leia antes de responder qualquer coisa que não esteja
 nas tabelas abaixo.
 

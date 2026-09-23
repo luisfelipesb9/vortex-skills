@@ -1,6 +1,7 @@
 ---
 name: vortex-plano
 description: "Skill do sistema de agentes da Vortex. Use quando você tiver um spec ou requisitos definidos para uma tarefa multi-etapas, antes de tocar em código. Transforma o design aprovado (saída da vortex-brainstorm) em um plano de implementação bite-sized, testável e pronto para execução por subagentes. Gatilhos: 'temos o spec, agora precisamos do plano', 'como vamos dividir isso em tarefas', 'gera o plano de implementação'."
+argument-hint: "[caminho-do-spec.md]"
 ---
 
 # Vortex Plano — Escrevendo Planos de Implementação
@@ -15,6 +16,14 @@ Assuma que quem executa é um desenvolvedor competente, mas que não conhece nos
 
 **Salve os planos em:** `<VORTEX_DOCS_PATH>/plans/YYYY-MM-DD-<nome-da-feature>.md` — default `.vortex/sdd/plans/`.
 Se o projeto configurou `VORTEX_DOCS_PATH` (na instalação do plugin ou em `.vortex/config.json`), use o caminho configurado.
+
+## Invocada com um caminho
+
+Se veio um argumento (`$ARGUMENTS`), ele é o caminho do spec — leia esse arquivo. Sem argumento,
+use o spec mais recente em `<VORTEX_DOCS_PATH>/specs/`.
+
+**Confirme que o spec foi aprovado pelo humano antes de planejar.** Spec escrito não é spec
+aprovado; planejar sobre design não validado empurra o retrabalho para a Task 7.
 
 ## Checagem de escopo
 
