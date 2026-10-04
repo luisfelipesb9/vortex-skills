@@ -2,6 +2,22 @@
 
 Formato: [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/). Versionamento semântico.
 
+## [1.0.3] — 2026-10-04
+
+### Corrigido
+
+- **Metade do gate de ledger estava morta.** O runtime manda `subagent_type` com o namespace do
+  plugin (`vortex-skills:vortex-implementador`), e o gate comparava contra nomes puros. O caminho do
+  brief funcionava; o da prosa ("refaça a Task 3") nunca disparava. Descoberto despachando um agente
+  de verdade numa sessão real — nenhum teste unitário pegaria, porque os testes passavam o nome puro
+  que eu *supunha* que o runtime mandava.
+
+### Adicionado
+
+- `.vortex/config.json` versionado neste repositório. O detector de suíte procura manifesto, e este
+  projeto usa `unittest` puro — reportava "nenhum comando de teste detectado" num repo com 83
+  testes. Serve de exemplo do escape hatch.
+
 ## [1.0.2] — 2026-09-23
 
 ### Corrigido
