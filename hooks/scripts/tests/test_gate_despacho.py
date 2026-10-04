@@ -116,7 +116,26 @@ class TestMatriz(unittest.TestCase):
         p.write_bytes(b"\xff\xfe binario invalido")
         self.assertEqual(decidir(despacho("leia task-3-brief.md", raiz=d)), "allow")
 
-    def test_15_entrada_vazia_nao_quebra(self):
+    def test_15_subagent_type_chega_com_namespace_do_plugin(self):
+        """O runtime manda `vortex-skills:vortex-implementador`, nao o nome puro.
+
+        Verificado ao vivo: um despacho real chega com o prefixo do plugin.
+        Sem normalizar, o caminho da prosa do gate nunca dispara — metade do
+        gate fica morta em silencio.
+        """
+        for st in ("vortex-implementador",
+                   "vortex-skills:vortex-implementador",
+                   "vortex-skills:vortex-dev-frontend"):
+            with self.subTest(st):
+                self.assertEqual(
+                    decidir(despacho("refaca a Task 3 por favor", subagent_type=st)), "deny", st)
+
+    def test_16_revisor_com_namespace_continua_liberado(self):
+        self.assertEqual(
+            decidir(despacho("revise a Task 3", subagent_type="vortex-skills:vortex-revisor")),
+            "allow")
+
+    def test_17_entrada_vazia_nao_quebra(self):
         self.assertIsNone(gate_despacho.responder({}, "block"))
         self.assertIsNone(gate_despacho.responder({"tool_name": "Agent"}, "block"))
 

@@ -46,9 +46,20 @@ BRIEF = re.compile(r"task[-_\s]?(\d+(?:\.\d+)?)[-_\s]?brief", re.I)
 PROSA = re.compile(r"\bTask\s+(\d+(?:\.\d+)?)\b", re.I)
 
 
+def _nome_do_agente(subagent_type):
+    """Tira o namespace do plugin.
+
+    O runtime manda `vortex-skills:vortex-implementador`, nao o nome puro —
+    verificado num despacho real. Sem normalizar, o caminho da prosa nunca
+    dispara e metade do gate fica morta em silencio.
+    """
+    return (subagent_type or "").rsplit(":", 1)[-1].strip()
+
+
 def numero_da_task(prompt, subagent_type):
     """(numero, aplicavel). Aplicavel = este despacho e de implementacao."""
     prompt = prompt or ""
+    subagent_type = _nome_do_agente(subagent_type)
 
     m = BRIEF.search(prompt)
     if m:
